@@ -1,0 +1,17 @@
+a.headline-anchor {
+  color: #ffed7a;
+  text-decoration: none;
+  position: absolute;
+  margin-left: -2rem;
+
+  &:hover {
+    color: #ffba36;
+  }
+}
+
+@media(max-width: 960px) {
+  a.headline-anchor {
+    margin-left: 0;
+    position: relative;
+  }
+}
