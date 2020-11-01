@@ -18,6 +18,7 @@
           to="#gettingstarted"
           large
           nuxt
+          @click="$gtag.event('interaction', { event_category: 'click', event_label: 'hero-primary' })"
         >
           Get started
         </v-btn>
@@ -29,6 +30,7 @@
           outlined
           large
           nuxt
+          @click="$gtag.event('interaction', { event_category: 'click', event_label: 'hero-secondary' })"
         >
           Try it!?
         </v-btn>

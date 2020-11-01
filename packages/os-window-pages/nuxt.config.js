@@ -34,7 +34,8 @@ export default {
   */
   plugins: [
     '~/plugins/anchor.js',
-    '~/plugins/os-window-vue'
+    '~/plugins/os-window-vue',
+    '~/plugins/gtag'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -86,5 +87,9 @@ export default {
   font: {
     family: 'Roboto'
   },
-  icons: 'mdi'
+  icons: 'mdi',
+  env: {
+    GTM_DEBUG_MODE: process.env.NODE_ENV === 'development',
+    GTM_MEASUREMENT_ID: 'G-B0ZYPFV01T'
+  }
 }
