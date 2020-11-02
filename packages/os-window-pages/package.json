@@ -1,9 +1,12 @@
 {
   "name": "os-window-nuxt-app",
   "version": "1.0.0",
-  "description": "My sweet Nuxt.js project",
-  "author": "Benjamin Sattler &lt;bsattler.inbox@gmail.com&gt;",
+  "description": "Landing page for the Os-window project",
   "private": true,
+  "author": {
+    "name": "Benjamin Sattler",
+    "email": "bsattler.inbox@gmail.com"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
