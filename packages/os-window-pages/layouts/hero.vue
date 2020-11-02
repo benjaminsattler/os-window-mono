@@ -1,5 +1,8 @@
 <template>
   <v-app>
+    <client-only>
+      <cookie-banner />
+    </client-only>
     <v-app-bar
       hide-on-scroll
     >
@@ -179,11 +182,13 @@
 </template>
 
 <script>
+import CookieBanner from '../components/cookie-banner.vue'
 import TopHero from '../components/top-hero.vue'
 import DefaultFooter from '../components/default-footer.vue'
 
 export default {
   components: {
+    CookieBanner,
     DefaultFooter,
     TopHero
   },

@@ -35,7 +35,8 @@ export default {
   plugins: [
     '~/plugins/anchor.js',
     '~/plugins/os-window-vue',
-    '~/plugins/gtag'
+    '~/plugins/gtag',
+    '~/plugins/tracker'
   ],
   /*
   ** Nuxt.js dev-modules
