@@ -13,27 +13,57 @@
           cols="12"
           class="text-center"
         >
-          <a rel="noopener" href="https://github.com/benjaminsattler/os-window/blob/master/doc/index.md">
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/blob/master/doc/index.md"
+            data-track-label="footer-link-documentation"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
             Documentation
           </a>
           &middot;
-          <a rel="noopener" href="https://github.com/benjaminsattler/os-window/releases">
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/releases"
+            data-track-label="footer-link-downloads"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
             Downloads
           </a>
           &middot;
-          <a rel="noopener" href="https://github.com/benjaminsattler/os-window">
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window"
+            data-track-label="footer-link-sourcecode"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
             Source Code
           </a>
           &middot;
-          <a rel="noopener" href="https://www.npmjs.com/package/os-window">
+          <a
+            rel="noopener"
+            href="https://www.npmjs.com/package/os-window"
+            data-track-label="footer-link-npmjs"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
             npm.js
           </a>
           &middot;
-          <a rel="noopener" href="https://github.com/benjaminsattler/os-window/issues">
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/issues"
+            data-track-label="footer-link-bugreport"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
             Bugreport
           </a>
           &middot;
-          <a rel="noopener" href="https://github.com/benjaminsattler/os-window/blob/master/LICENSE">
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/blob/master/LICENSE"
+            data-track-label="footer-link-license"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
             License
           </a>
         </v-col>
@@ -49,6 +79,8 @@
           <a
             href="https://github.com/benjaminsattler/os-window-vue"
             rel="noopener"
+            data-track-label="footer-link-integration-vuejs"
+            :data-track-config="JSON.stringify(trackingConfig)"
           >
             Vue.js
           </a>
@@ -60,7 +92,18 @@
 
 <script>
 export default {
-  name: 'DefaultFooter'
+  name: 'DefaultFooter',
+  data () {
+    return {
+      trackingConfig: {
+        mouseover: ['interaction', 'footer-interaction'],
+        mouseout: ['interaction', 'footer-interaction'],
+        focus: ['interaction', 'footer-interaction'],
+        focusout: ['interaction', 'footer-interaction'],
+        click: ['interaction', 'footer-interaction']
+      }
+    }
+  }
 }
 </script>
 

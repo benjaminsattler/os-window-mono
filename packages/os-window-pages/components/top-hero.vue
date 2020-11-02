@@ -18,7 +18,8 @@
           to="#gettingstarted"
           large
           nuxt
-          @click="$gtag.event('interaction', { event_category: 'click', event_label: 'hero-primary' })"
+          data-track-label="hero-primary"
+          :data-track-config="JSON.stringify(trackingConfig)"
         >
           Get started
         </v-btn>
@@ -30,9 +31,10 @@
           outlined
           large
           nuxt
-          @click="$gtag.event('interaction', { event_category: 'click', event_label: 'hero-secondary' })"
+          data-track-label="hero-secondary"
+          :data-track-config="JSON.stringify(trackingConfig)"
         >
-          Try it!?
+          Try it!
         </v-btn>
       </div>
     </v-layout>
@@ -41,7 +43,18 @@
 
 <script>
 export default {
-  name: 'TopHero'
+  name: 'TopHero',
+  data () {
+    return {
+      trackingConfig: {
+        mouseover: ['interaction', 'hero-interaction'],
+        mouseout: ['interaction', 'hero-interaction'],
+        focus: ['interaction', 'hero-interaction'],
+        focusout: ['interaction', 'hero-interaction'],
+        click: ['interaction', 'hero-interaction']
+      }
+    }
+  }
 }
 </script>
 
@@ -49,6 +62,5 @@ export default {
   .hero {
     background: #ffba36;
     box-shadow: inset 0px -2px 4px -1px rgba(0, 0, 0, 0.2), inset 0px -4px 5px 0px rgba(0, 0, 0, 0.14), inset 0px -1px 10px 0px rgba(0, 0, 0, 0.12);
-
   }
 </style>

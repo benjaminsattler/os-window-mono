@@ -1,4 +1,12 @@
 
+const cssAssets = [
+  '~/assets/global.scss'
+]
+
+if (process.env.NODE_ENV === 'development') {
+  cssAssets.push('~/assets/debug-tracking.scss')
+}
+
 export default {
   mode: 'universal',
   /*
@@ -26,9 +34,7 @@ export default {
   /*
   ** Global CSS
   */
-  css: [
-    '~/assets/global.scss'
-  ],
+  css: cssAssets,
   /*
   ** Plugins to load before mounting the App
   */
@@ -91,6 +97,7 @@ export default {
   icons: 'mdi',
   env: {
     GTM_DEBUG_MODE: process.env.NODE_ENV === 'development',
-    GTM_MEASUREMENT_ID: 'G-B0ZYPFV01T'
+    GTM_MEASUREMENT_ID: 'G-B0ZYPFV01T',
+    NUXT_ENV_GTM_OSW_PAGE_VERSION: process.env.NUXT_ENV_GTM_OSW_PAGE_VERSION || 'dev'
   }
 }

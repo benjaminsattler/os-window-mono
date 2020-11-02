@@ -9,9 +9,15 @@
       <v-app-bar-nav-icon
         class="d-md-none"
         aria-label="Open navigation drawer"
+        data-track-label="drawer"
+        :data-track-config="JSON.stringify(topTrackingConfig)"
         @click.stop="drawerToggle = !drawerToggle"
       />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title
+        data-track-label="title"
+        :data-track-config="JSON.stringify(topTrackingConfig)"
+        v-text="title"
+      />
       <v-spacer />
       <v-toolbar-items
         class="d-none d-md-flex"
@@ -24,6 +30,8 @@
           text
           nuxt
           link
+          :data-track-label="item.title.toLowerCase()"
+          :data-track-config="JSON.stringify(topTrackingConfig)"
         >
           {{ item.title }}
         </v-btn>
@@ -32,6 +40,8 @@
           text
           nuxt
           link
+          data-track-label="github"
+          :data-track-config="JSON.stringify(topTrackingConfig)"
         >
           <a
             aria-label="Open Github Repository"
@@ -48,6 +58,8 @@
           nuxt
           link
           style="padding-top: 4px"
+          data-track-label="npmjs"
+          :data-track-config="JSON.stringify(topTrackingConfig)"
         >
           <a
             aria-label="Open npmjs Package Registry"
@@ -69,9 +81,15 @@
       <v-app-bar-nav-icon
         class="d-md-none"
         aria-label="Open navigation drawer"
+        data-track-label="drawer"
+        :data-track-config="JSON.stringify(scrolledTrackingConfig)"
         @click.stop="drawerToggle = !drawerToggle"
       />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title
+        data-track-label="title"
+        :data-track-config="JSON.stringify(scrolledTrackingConfig)"
+        v-text="title"
+      />
       <v-spacer />
       <v-toolbar-items
         class="d-none d-md-flex"
@@ -84,6 +102,8 @@
           text
           nuxt
           link
+          :data-track-label="item.title.toLowerCase()"
+          :data-track-config="JSON.stringify(scrolledTrackingConfig)"
         >
           {{ item.title }}
         </v-btn>
@@ -92,6 +112,8 @@
           text
           nuxt
           link
+          data-track-label="github"
+          :data-track-config="JSON.stringify(scrolledTrackingConfig)"
         >
           <a
             aria-label="Open Github Repository"
@@ -107,6 +129,8 @@
           nuxt
           link
           style="padding-top: 4px"
+          data-track-label="npmjs"
+          :data-track-config="JSON.stringify(scrolledTrackingConfig)"
         >
           <a
             aria-label="Open npmjs Package Registry"
@@ -133,6 +157,8 @@
           v-for="item in items"
           :key="item.title"
           :to="item.target"
+          data-track-label="item.title.toLowerCase()"
+          :data-track-config="JSON.stringify(mobileTrackingConfig)"
           link
           nuxt
         >
@@ -148,6 +174,8 @@
                 nuxt
                 link
                 aria-label="Link to Github Repository"
+                data-track-label="github"
+                :data-track-config="JSON.stringify(mobileTrackingConfig)"
               >
                 <a rel="noopener" href="https://github.com/benjaminsattler/os-window" target="_blank">
                   <v-img src="/img/gh-32px.png" alt="Github Logo" height="32" width="32" class="align-self-center" />
@@ -159,6 +187,8 @@
                 link
                 style="padding-top: 4px"
                 aria-label="Link to npmjs Package Registry"
+                data-track-label="npmjs"
+                :data-track-config="JSON.stringify(mobileTrackingConfig)"
               >
                 <a rel="noopener" href="https://www.npmjs.com/package/os-window" target="_blank">
                   <svg height="64" width="64" viewBox="0 0 780 250">
@@ -215,7 +245,28 @@ export default {
         target: '#contributing',
         title: 'Contributing'
       }],
-      userHasScrolled: false
+      userHasScrolled: false,
+      topTrackingConfig: {
+        mouseover: ['interaction', 'top-nav-interaction'],
+        mouseout: ['interaction', 'top-nav-interaction'],
+        focus: ['interaction', 'top-nav-interaction'],
+        focusout: ['interaction', 'top-nav-interaction'],
+        click: ['interaction', 'top-nav-interaction']
+      },
+      scrolledTrackingConfig: {
+        mouseover: ['interaction', 'scrolled-nav-interaction'],
+        mouseout: ['interaction', 'scrolled-nav-interaction'],
+        focus: ['interaction', 'scrolled-nav-interaction'],
+        focusout: ['interaction', 'scrolled-nav-interaction'],
+        click: ['interaction', 'scrolled-nav-interaction']
+      },
+      mobileTrackingConfig: {
+        mouseover: ['interaction', 'mobile-nav-interaction'],
+        mouseout: ['interaction', 'mobile-nav-interaction'],
+        focus: ['interaction', 'mobile-nav-interaction'],
+        focusout: ['interaction', 'mobile-nav-interaction'],
+        click: ['interaction', 'mobile-nav-interaction']
+      }
     }
   }
 }

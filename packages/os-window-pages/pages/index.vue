@@ -14,7 +14,13 @@
         <h2>Install via node package manager</h2>
 
         <p>Run the following command in your command line to add os-window to your project</p>
-        <os-window-vue interactive hover theme="dark">
+        <os-window-vue
+          interactive
+          hover
+          theme="dark"
+          data-track-label="page-index-gettingstarted-packagemanager"
+          :data-track-config="JSON.stringify(trackingConfig)"
+        >
           <pre class="sourcecode shell"><code># for NPM</code>
 <code class="line">&gt; npm install --save os-window</code>
 <code />
@@ -26,13 +32,25 @@
 
         <p>Include the JavaScript module in your HTML page</p>
 
-        <os-window-vue interactive hover theme="dark">
+        <os-window-vue
+          interactive
+          hover
+          theme="dark"
+          data-track-label="page-index-gettingstarted-module-inclusion"
+          :data-track-config="JSON.stringify(trackingConfig)"
+        >
           <pre class="sourcecode html"><code>&lt;script type=&quot;module&quot; src=&quot;node_modules/os-window/main.js&quot;&gt;&lt;/script&gt;</code></pre>
         </os-window-vue>
 
         <p>Or import the module into your JavaScript code</p>
 
-        <os-window-vue interactive hover theme="dark">
+        <os-window-vue
+          interactive
+          hover
+          theme="dark"
+          data-track-label="page-index-gettingstarted-module-import"
+          :data-track-config="JSON.stringify(trackingConfig)"
+        >
           <pre class="sourcecode javascript"><code>import 'os-window';</code></pre>
         </os-window-vue>
 
@@ -40,7 +58,13 @@
 
         <p>This project is also published to the CDN unpkg, which enables you to skip any local module installation when including this module in your webpage:</p>
 
-        <os-window-vue interactive hover theme="dark">
+        <os-window-vue
+          interactive
+          hover
+          theme="dark"
+          data-track-label="page-index-gettingstarted-module-cdn"
+          :data-track-config="JSON.stringify(trackingConfig)"
+        >
           <pre class="sourcecode html"><code>&lt;!-- Include specific version (recommended) --&gt;</code>
 <code>&lt;script type=&quot;module&quot; src=&quot;https://unpkg.com/os-window@0.2.2&quot;&gt;&lt;/script&gt;</code>
 <code />
@@ -48,7 +72,27 @@
 <code>&lt;script type=&quot;module&quot; src=&quot;https://unpkg.com/os-window&quot;&gt;&lt;/script&gt;</code></pre>
         </os-window-vue>
 
-        <p>For more information have a look at the [Installation Guide](./doc/installation.md) or the detailled [documentation](./doc/index.md).</p>
+        <p>
+          For more information have a look at the
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/blob/master/doc/installation.md"
+            data-track-label="page-index-gettingstarted-installation"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
+            installation guide
+          </a>
+          or the detailled
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/blob/master/doc/index.md"
+            data-track-label="page-index-gettingstarted-documentation"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
+            documentation
+          </a>
+          .
+        </p>
 
         <h2>Framework integration</h2>
 
@@ -56,7 +100,17 @@
           You can also use any of the following available framework integrations:
         </p>
         <ul>
-          <li><a rel="noopener" href="http://github.com/benjaminsattler/os-window-vue" target="_blank">component adapter for Vue.js</a></li>
+          <li>
+            <a
+              rel="noopener"
+              href="http://github.com/benjaminsattler/os-window-vue"
+              target="_blank"
+              data-track-label="page-index-integrations-vue"
+              :data-track-config="JSON.stringify(trackingConfig)"
+            >
+              component adapter for Vue.js
+            </a>
+          </li>
         </ul>
       </v-col>
     </v-row>
@@ -136,7 +190,19 @@
     </v-row>
     <v-row justify="center">
       <v-col md="8">
-        <p>Find more detailed information in the <a rel="noopener" href="https://github.com/benjaminsattler/os-window/blob/master/doc/index.md" target="_blank">documentation</a> hosted over at GitHub.</p>
+        <p>
+          Find more detailed information in the
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/blob/master/doc/index.md"
+            target="_blank"
+            data-track-label="page-index-documentation-documentation"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
+            documentation
+          </a>
+          hosted over at GitHub.
+        </p>
       </v-col>
     </v-row>
     <v-divider />
@@ -149,11 +215,55 @@
     </v-row>
     <v-row justify="center">
       <v-col md="8">
-        <p>If you have any ideas, just <a rel="noopener" href="https://github.com/benjaminsattler/os-window/issues/new" target="_blank">open an issue</a> and tell me what you think.</p>
-
-        <p>If you find any bugs, just <a rel="noopener" href="https://github.com/benjaminsattler/os-window/issues/new" target="_blank">open an issue</a> and let me know. Or go right ahead and create a <a rel="noopener" href="https://github.com/benjaminsattler/os-window/pulls/" target="_blank">pull request</a>.</p>
-
-        <p>If you'd like to contribute, please fork <a rel="noopener" href="https://github.com/benjaminsattler/os-window/" target="_blank">the source code</a> and make changes as you'd like. Pull requests are warmly welcome.</p>
+        <p>
+          If you have any ideas, just
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/issues/new"
+            target="_blank"
+            data-track-label="page-index-contributing-ideas"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
+            open an issue
+          </a>
+          and tell me what you think.
+        </p>
+        <p>
+          If you find any bugs, just
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/issues/new"
+            target="_blank"
+            data-track-label="page-index-contributing-bugs"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
+            open an issue
+          </a>
+          and let me know. Or go right ahead and create a
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/pulls/"
+            target="_blank"
+            data-track-label="page-index-contributing-pullrequest"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
+            pull request
+          </a>
+          .
+        </p>
+        <p>
+          If you'd like to contribute, please fork
+          <a
+            rel="noopener"
+            href="https://github.com/benjaminsattler/os-window/"
+            target="_blank"
+            data-track-label="page-index-contributing-fork"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
+            the source code
+          </a>
+          and make changes as you'd like. Pull requests are warmly welcome.
+        </p>
       </v-col>
     </v-row>
   </v-container>
@@ -174,6 +284,23 @@ export default {
   components: {
     DemoPanel,
     OsWindowVue
+  },
+  data () {
+    return {
+      trackingConfig: {
+        mouseover: ['interaction', 'page-index-interaction'],
+        mouseout: ['interaction', 'page-index-interaction'],
+        focus: ['interaction', 'page-index-interaction'],
+        focusout: ['interaction', 'page-index-interaction'],
+        click: ['interaction', 'page-index-interaction'],
+        'hover-change': ['os-window-engagement', 'page-index-interaction'],
+        'interactive-change': ['os-window-engagement', 'page-index-interaction'],
+        'os-theme-change': ['os-window-engagement', 'page-index-interaction'],
+        'theme-change': ['os-window-engagement', 'page-index-interaction'],
+        'window-title-change': ['os-window-engagement', 'page-index-interaction'],
+        'window-state-change': ['os-window-engagement', 'page-index-interaction']
+      }
+    }
   }
 }
 </script>
