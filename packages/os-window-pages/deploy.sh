@@ -4,6 +4,7 @@ set -euxo pipefail
 
 PAGES_BRANCH="${PAGES_BRANCH:-gh-pages}"
 BUILD_BRANCH="${BUILD_BRANCH:-master}"
+FULL="${FULL:-0}";
 
 
 SCRIPTPATH=$(realpath $(dirname $0))
@@ -29,6 +30,11 @@ git -C "${WORKDIR}" clean -dfX
 git -C "${WORKDIR}" add -A
 git -C "${WORKDIR}" commit -m "new deploy"
 git -C "${SCRIPTPATH}" worktree remove -f $WORKDIR
+
+if [[ "${FULL}" == "1" ]]; then
+  git -C "${SCRIPTPATH}" push origin "${PAGES_BRANCH}":"${PAGES_BRANCH}"
+  exit 0
+fi
 
 set +x
 echo "Please push the new release manually using"
