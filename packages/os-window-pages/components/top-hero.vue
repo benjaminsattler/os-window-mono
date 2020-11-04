@@ -40,7 +40,13 @@
       <div
         class="d-flex align-self-end mt-8"
       >
-        <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/os-window">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.npmjs.com/package/os-window"
+          data-track-label="hero-npmjs"
+          :data-track-config="JSON.stringify(trackingConfig)"
+        >
           <img src="https://img.shields.io/npm/v/os-window" alt="npm Version" data-canonical-src="https://img.shields.io/npm/v/os-window" style="max-width:100%;">
         </a>
       </div>
