@@ -27,7 +27,7 @@ echo "setting up temporary worktree in ${WORKDIR}"
 git -C "${SCRIPTPATH}" worktree prune
 git -C "${SCRIPTPATH}" worktree add -f $WORKDIR "${BUILD_BRANCH}"
 yarn --cwd "${WORKDIR}"
-NUXT_ENV_GTM_OSW_PAGE_VERSION="${HEAD_HASH}" yarn --cwd "${WORKDIR}" generate
+NUXT_ENV_GTM_OSW_PAGE_VERSION="${HEAD_REF}" yarn --cwd "${WORKDIR}" generate
 rm -rf "${WORKDIR}"node_modules
 git -C "${WORKDIR}" stash -a
 git -C "${WORKDIR}" checkout -f "${PAGES_BRANCH}"
