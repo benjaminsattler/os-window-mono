@@ -1,14 +1,14 @@
 <template>
   <v-container fluid fill-height class="hero">
     <v-layout justify-center align-center column pa-5>
-      <div class="mt-8 display-4 font-weight-black white--text text-center">
+      <div class="mt-8 display-3 font-weight-black white--text text-center">
         Os-Window
       </div>
-      <div class="display-4 font-weight-black white--text text-center mb-3">
+      <div class="display-2 font-weight-black white--text text-center mb-3">
         Web Component
       </div>
       <div class="display-1 font-weight-bold white--text text-center">
-        Create configurable interactive application windows on your website
+        Interactive application windows for your website
       </div>
       <div>
         <v-btn
@@ -36,6 +36,13 @@
         >
           Try it!
         </v-btn>
+      </div>
+      <div
+        class="d-flex align-self-end mt-8"
+      >
+        <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/os-window">
+          <img src="https://img.shields.io/npm/v/os-window" alt="npm Version" data-canonical-src="https://img.shields.io/npm/v/os-window" style="max-width:100%;">
+        </a>
       </div>
     </v-layout>
   </v-container>
