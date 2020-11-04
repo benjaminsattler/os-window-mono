@@ -1,6 +1,6 @@
 {
   "name": "os-window-nuxt-app",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Landing page for the Os-window project",
   "private": true,
   "author": {
@@ -13,8 +13,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "test": "jest",
-    "deploy": "FULL=1 ./deploy.sh"
+    "test": "true",
+    "release": "np major",
+    "postrelease": "FULL=1 ./deploy.sh"
   },
   "lint-staged": {
     "*.{js,vue}": "yarn lint",
@@ -45,6 +46,7 @@
     "husky": "^4.0.0",
     "jest": "^24.1.0",
     "lint-staged": "^10.0.0",
+    "np": "5.2.1",
     "stylelint": "^10.1.0",
     "vue-jest": "^4.0.0-0"
   }
