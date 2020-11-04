@@ -1,13 +1,4 @@
-
-const cssAssets = [
-  '~/assets/global.scss'
-]
-
-if (process.env.NODE_ENV === 'development') {
-  cssAssets.push('~/assets/debug-tracking.scss')
-}
-
-export default {
+const options = {
   mode: 'universal',
   /*
   ** Headers of the page
@@ -21,19 +12,12 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'A web component (also known as custom element) based library which provides window decorations from the most common operating systems.' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   /*
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
-  css: cssAssets,
   /*
   ** Plugins to load before mounting the App
   */
@@ -59,15 +43,6 @@ export default {
   modules: [
   ],
   /*
-  ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
-  */
-  vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-    }
-  },
-  /*
   ** Build configuration
   */
   build: {
@@ -90,13 +65,42 @@ export default {
       return goTo(scrollTo)
     } */
   },
-  font: {
-    family: 'Roboto'
-  },
-  icons: 'mdi',
   env: {
     GTM_DEBUG_MODE: process.env.NODE_ENV === 'development',
     GTM_MEASUREMENT_ID: 'G-B0ZYPFV01T',
     NUXT_ENV_GTM_OSW_PAGE_VERSION: process.env.NUXT_ENV_GTM_OSW_PAGE_VERSION || 'dev'
   }
 }
+
+const cssAssets = [
+  '~/assets/global.scss'
+]
+
+if (process.env.NODE_ENV === 'development') {
+  cssAssets.push('~/assets/debug-tracking.scss')
+  cssAssets.push('~/node_modules/roboto-fontface/css/roboto/sass/roboto-fontface.scss')
+  cssAssets.push('~/node_modules/@mdi/font/scss/materialdesignicons.scss')
+}
+options.css = cssAssets
+
+const link = [
+  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+]
+options.head.link = link
+
+const vuetify = {
+  customVariables: ['~/assets/variables.scss'],
+  defaultAssets: {
+    font: {
+      family: 'Roboto'
+    },
+    icons: 'mdi'
+  },
+  theme: { }
+}
+if (process.env.NODE_ENV === 'development') {
+  vuetify.defaultAssets = false
+}
+
+options.vuetify = vuetify
+export default options
