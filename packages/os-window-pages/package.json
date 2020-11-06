@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "nuxt": "^2.0.0",
-    "os-window": "^0.2.4",
-    "os-window-vue": "^0.1.4",
+    "os-window": "^0.3.0",
+    "os-window-vue": "^0.1.5",
     "tiny-cookie": "^2.3.2",
     "vue-gtag": "^1.10.0"
   },
