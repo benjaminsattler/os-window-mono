@@ -1,38 +1,78 @@
 {
   "name": "os-window-reactjs",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
+  "version": "0.0.0",
+  "description": "Integrates the os-window custom component into reactjs.",
+  "main": "main.js",
+  "scripts": {
+    "lint": "eslint --no-fix main.js lib test --ext .js,.ts",
+    "dev": "python -m SimpleHTTPServer 8000",
+    "test": "node ./test/runner.js",
+    "prerelease": "rm -rf node_modules && yarn && npx npm-install-peers && npm login",
+    "release": "np --no-cleanup"
+  },
+  "keywords": [
+    "window",
+    "chrome",
+    "decoration",
+    "border",
+    "os",
+    "operating system",
+    "mac",
+    "macos",
+    "apple",
+    "os-window",
+    "react",
+    "reactjs",
+    "component"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjaminsattler/os-window-reactjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benjaminsattler/os-window-reactjs/issues"
+  },
+  "author": {
+    "name": "Benjamin Sattler",
+    "email": "bsattler.inbox@gmail.com"
+  },
+  "homepage": "https://os-window.benjaminsattler.net",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "main.js",
+    "browser.js"
+  ],
+  "peerInstallOptions": {
+    "save": false
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "chai": "^4.2.0",
+    "connect": "^3.7.0",
+    "eslint": "^7.12.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.0",
+    "mocha": "^8.2.0",
+    "npm-install-peers": "^1.2.1",
+    "playwright": "^1.5.1",
+    "prettier": "^2.1.2",
+    "serve-static": "^1.14.1"
+  },
+  "peerDependencies": {
+    "os-window": "^0.3.0",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4"
+    "react-dom": "^17.0.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "directories": {
+    "lib": "./lib",
+    "doc": "./doc",
+    "test": "./test"
   }
 }

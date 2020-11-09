@@ -1,70 +1,166 @@
-# Getting Started with Create React App
+# OS-Window Reactjs Component
+![CI Status](https://github.com/benjaminsattler/os-window-reactjs/workflows/CI/badge.svg)
+![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-reactjs)
+![npm Bundle Size](https://img.shields.io/bundlephobia/min/os-window-reactjs)
+![npm Version](https://img.shields.io/npm/v/os-window-reactjs)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A React.js wrapper around [os-window][os-window] which provides support for React.js events and properties.
 
-## Available Scripts
+## Getting started
 
-In the project directory, you can run:
+Choose any of the following methods to get started. You also need to install the actual [os-window][os-window] library. For development you also need to install `prop-types`.
 
-### `yarn start`
+### Install via node package manager
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Run the following command in your command line to add both os-window and os-window-reactjs to your project. You also need to add prop-types to your devDependencies.
+```shell
+# for NPM
+> npm install --save os-window os-window-reactjs && npm install --save-dev prop-types
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# for YARN
+> yarn add os-window os-window-reactjs prop-types && yarn add -D prop-types
+```
 
-### `yarn test`
+#### Including the base library
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In your application entrypoint you need to include the library `os-window`. Afterwards you can use the reactjs component as shown in the example section:
 
-### `yarn build`
+```javascript
+import 'os-window';
+import 'os-window-reactjs';
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Inclusion in the Browser
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You can also directly include the JavaScript module in the browser with the `browser.js` entrypoint:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="module" src="node_modules/prop-types/prop-types.js"></script>
+    <script type="module" src="node_modules/react/umd/react.development.js"></script>
+    <script type="module" src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type="module" src="node_modules/os-window/main.js"></script>
+    <script type="module" src="node_modules/os-window-reactjs/browser.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      ReactDOM.render(
+        React.createElement(
+          window.OsWindowReact,
+          { },
+          React.createElement(
+            'img',
+            {
+              src: 'https://placekitten.com/250/250',
+            },
+            null
+          ),
+        ),
+        document.querySelector('#app')
+      );
+    </script>
+  </body>
+</html>
+```
 
-### `yarn eject`
+### Use the CDN
+This project is also published to the CDN unpkg, which enables you to skip any local module installation when including this module in your webpage. Don't forget to also include `os-window` and 'prop-types', which are also provided by unpkg:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```html
+<!-- Include specific version (recommended) -->
+<script type="module" src="https://unpkg.com/os-window@0.3.0"></script>
+<script type="module" src="https://unpkg.com/os-window-reactjs@0.1.0/browser.js"></script>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- Include latest version (not recommended) -->
+<script type="module" src="https://unpkg.com/os-window"></script>
+<script type="module" src="https://unpkg.com/os-window-reactjs/browser.js"></script>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For more information have a look at the [Installation Guide](./doc/installation.md) or the detailled [documentation](./doc/index.md).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Demo
+Try the latest version of os-window-reactjs online at <a href="https://bit.ly/3eYBYkU" target="_blank">https://bit.ly/3eYBYkU</a>!
 
-## Learn More
+## Examples
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This example creates a non-interactive window with light macos theme
+```jsx
+import 'os-window';
+import OsWindowReactjs from 'os-window-reactjs';
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+function App() {
+  return (
+    <OsWindowReactjs
+      windowTitle="Random Cat Pic"
+    >
+      <img src="https://placekitten.com/250/250">
+    </OsWindowReactjs>
+  );
+}
 
-### Code Splitting
+export default App;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![mac light theme](./doc/img/macos-light.png)
+![mac dark theme](./doc/img/macos-dark.png)
 
-### Analyzing the Bundle Size
+The next example creates a fully interactive window with dark macos theme
+```jsx
+import 'os-window';
+import OsWindowReactjs from 'os-window-reactjs';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+function App() {
+  return (
+    <OsWindowReactjs
+      hover
+      interactive
+      osTheme="mac"
+      theme="dark"
+      windowState="maximized"
+      windowTitle="Random Cat Pic"
+    >
+      <img src="https://placekitten.com/250/250" />
+    </OsWindowReactjs>
+  );
+}
 
-### Making a Progressive Web App
+export default App;
+```
+## Requirements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  - os-window: Ver. >= 0.3.0
+  - Reactjs: Ver. >= 17.0.0
+  - Browsers:
+    - IE: not supported
+    - Edge: Ver. >= 80
+    - Firefox: Ver. >= 63
+    - Chrome: Ver. >= 67
+    - Safari: Ver. >= 10.1
+    - Opera: Ver >= 41
 
-### Advanced Configuration
+For development additionally:
+  - prop-types: Ver. >= 15.7
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Documentation
 
-### Deployment
+Find more detailed information in the [documentation](./doc/index.md).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contributing
+If you have any ideas, just [open an issue][issues] and tell me what you think.
 
-### `yarn build` fails to minify
+If you find any bugs, just [open an issue][issues] and let me know. Or go right ahead and create a [pull request][pulls].
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you'd like to contribute, please fork the repository and make changes as
+you'd like. Pull requests are warmly welcome.
+
+## Licensing
+
+This project is licensed under MIT license. You'll find a copy of the MIT license in the file [LICENSE](LICENSE).
+
+[issues]:https://github.com/benjaminsattler/os-window-reactjs/issues/new
+[pulls]:https://github.com/benjaminsattler/os-window-reactjs/pulls
+[os-window]:https://github.com/benjaminsattler/os-window

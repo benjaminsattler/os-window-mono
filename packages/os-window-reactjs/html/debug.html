@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Vue Tests</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div style="display: flex; flex-wrap: nowrap; margin-bottom: 1rem;">
+            <fieldset style="flex: 1 1 50%;">
+                <legend>Manipulate underlying os-window instance</legend>
+                <div>
+                    <label>
+                        <input type="checkbox" id="osw-hover">
+                        hover?
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" id="osw-interactive">
+                        interactive?
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Os-Theme
+                        <select id="osw-os-theme"></select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Theme
+                        <select id="osw-theme"></select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Window-State
+                        <select id="osw-window-state"></select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Window-Title
+                        <input type="text" id="osw-window-title">
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset style="flex: 1 1 50%;">
+                <legend>Manipulate os-window-react</legend>
+                <div>
+                    <label>
+                        <input type="checkbox" id="oswr-hover">
+                        hover?
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" id="oswr-interactive">
+                        interactive?
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Os-Theme
+                        <select id="oswr-os-theme"></select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Theme
+                        <select id="oswr-theme"></select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Window-State
+                        <select id="oswr-window-state"></select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Window-Title
+                        <input type="text" id="oswr-window-title">
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        <div style="display: flex; flex-wrap: nowrap; margin-bottom: 1rem;">
+            <div id="oswrapp" style="flex: 1 1 50%"></div>
+            <div id="oswrapp-html" style="margin: 1rem; flex: 1 1 50%; white-space: pre; font-family: monospace"></div>
+        </div>
+        <script type="module" src="../node_modules/prettier/standalone.js"></script>
+        <script type="module" src="../node_modules/prettier/parser-html.js"></script>
+        <script type="module" src="../node_modules/prop-types/prop-types.js"></script>
+        <script type="module" src="../node_modules/react/umd/react.development.js"></script>
+        <script type="module" src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+        <script type="module" src="../node_modules/react-dom/umd/react-dom-test-utils.development.js"></script>
+        <script type="module" src="../node_modules/os-window/main.js"></script>
+        <script type="module" src="../browser.js"></script>
+        <script type="module">
+            let hover = true;
+            let interactive = true;
+            let osTheme = 'mac';
+            let theme = 'dark';
+            let windowState = 'maximized';
+            let windowTitle = 'my window title';
+
+            const renderFn = () => ReactDOM.render(
+                React.createElement(
+                    'strict-mode',
+                    null,
+                    React.createElement(
+                        window.OsWindowReact,
+                        {
+                            hover,
+                            interactive,
+                            osTheme,
+                            theme,
+                            windowState,
+                            windowTitle,
+
+                            onHoverChange: e => { hover = e.detail.newValue; renderFn(); },
+                            onInteractiveChange: e => { interactive = e.detail.newValue; renderFn(); },
+                            onOsThemeChange: e => { osTheme = e.detail.newOsTheme; renderFn(); },
+                            onThemeChange: e => { theme = e.detail.newTheme; renderFn(); },
+                            onWindowStateChange: e => { windowState = e.detail.newWindowState; renderFn(); },
+                            onWindowTitleChange: e => { windowTitle = e.detail.newWindowTitle; renderFn(); },
+                        },
+                        React.createElement(
+                            'img',
+                            {
+                                src: 'https://placekitten.com/250/250',
+                            },
+                            null
+                        ),
+                    ),
+                ),
+                document.getElementById('oswrapp')
+            );
+
+            renderFn();
+
+            const supportedOsThemes = customElements.get('os-window').supportedOsThemes;
+            const supportedThemes = customElements.get('os-window').supportedThemes;
+            const supportedWindowStates = customElements.get('os-window').supportedWindowStates;
+            const osWindowInstance = document.querySelector('#oswrapp os-window');
+
+            // os-window-react controls
+            const oswrHoverControl = document.querySelector('#oswr-hover');
+            const oswrInteractiveControl = document.querySelector('#oswr-interactive');
+            const oswrOsThemeControl = document.querySelector('#oswr-os-theme');
+            const oswrThemeControl = document.querySelector('#oswr-theme');
+            const oswrWindowStateControl = document.querySelector('#oswr-window-state');
+            const oswrWindowTitleControl = document.querySelector('#oswr-window-title');
+
+            for (let i = 0; i < supportedOsThemes.length; i += 1) {
+                const newOption = document.createElement('option');
+                newOption.value = newOption.label = supportedOsThemes[i];
+                oswrOsThemeControl.add(newOption);
+            }
+            for (let i = 0; i < supportedThemes.length; i += 1) {
+                const newOption = document.createElement('option');
+                newOption.value = newOption.label = supportedThemes[i];
+                oswrThemeControl.add(newOption);
+            }
+            for (let i = 0; i < supportedWindowStates.length; i += 1) {
+                const newOption = document.createElement('option');
+                newOption.value = newOption.label = supportedWindowStates[i];
+                oswrWindowStateControl.add(newOption);
+            }
+
+            const oswrLogEvent = (eventName, event) => {
+                console.log('os-window-reactjs: new event fired', eventName, event);
+            };
+
+            oswrHoverControl.checked = osWindowInstance.hover;
+            oswrHoverControl.addEventListener('change', function () {
+                osWindowInstance.hover = oswrHoverControl.checked;
+            });
+            osWindowInstance.addEventListener('hoverChange', function (e) {
+                oswrHoverControl.checked = e.detail.newValue;
+                oswrLogEvent('hoveChange', ...arguments);
+            });
+
+            oswrInteractiveControl.checked = osWindowInstance.interactive;
+                oswrInteractiveControl.addEventListener('change', function () {
+                osWindowInstance.interactive = oswrInteractiveControl.checked;
+            });
+            osWindowInstance.addEventListener('interactiveChange', function (e) {
+                oswrInteractiveControl.checked = e.detail.newValue;
+                oswrLogEvent('interactiveChange', ...arguments);
+            });
+
+            oswrOsThemeControl.selectedIndex = Array.prototype.findIndex.call(
+                oswrOsThemeControl.options,
+                (option) => option.value === osWindowInstance.osTheme
+            );
+            oswrOsThemeControl.addEventListener('input', function () {
+                osWindowInstance.osTheme = oswrOsThemeControl.options[oswrOsThemeControl.selectedIndex].value;
+            });
+            osWindowInstance.addEventListener('osThemeChange', function (e) {
+                oswrOsThemeControl.selectedIndex = Array.prototype.findIndex.call(
+                    oswrOsThemeControl.options,
+                    (option) => option.value === e.detail.newOsTheme
+                );
+                oswrLogEvent('osThemeChange', ...arguments);
+            });
+
+            oswrThemeControl.selectedIndex = Array.prototype.findIndex.call(
+                oswrThemeControl.options,
+                (option) => option.value === osWindowInstance.theme
+            );
+            oswrThemeControl.addEventListener('input', function () {
+                osWindowInstance.theme = oswrThemeControl.options[oswrThemeControl.selectedIndex].value;
+            });
+            osWindowInstance.addEventListener('themeChange', function (e) {
+                oswrThemeControl.selectedIndex = Array.prototype.findIndex.call(
+                    oswrThemeControl.options,
+                    (option) => option.value === e.detail.newTheme
+                );
+                oswrLogEvent('themeChange', ...arguments);
+            });
+
+            oswrWindowStateControl.selectedIndex = Array.prototype.findIndex.call(
+                oswrWindowStateControl.options,
+                (option) => option.value === osWindowInstance.windowState
+            );
+            oswrWindowStateControl.addEventListener('input', function () {
+                osWindowInstance.windowState = oswrWindowStateControl.options[oswrWindowStateControl.selectedIndex].value;
+            });
+            osWindowInstance.addEventListener('windowStateChange', function (e) {
+                oswrWindowStateControl.selectedIndex = Array.prototype.findIndex.call(
+                    oswrWindowStateControl.options,
+                    (option) => option.value === e.detail.newWindowState
+                );
+                oswrLogEvent('windowStateChange', ...arguments);
+            });
+
+            oswrWindowTitleControl.value = osWindowInstance.windowTitle;
+            oswrWindowTitleControl.addEventListener('input', function () {
+                osWindowInstance.windowTitle = oswrWindowTitleControl.value;
+            });
+            osWindowInstance.addEventListener('windowTitleChange', function (e) {
+                oswrWindowTitleControl.value = e.detail.newWindowTitle;
+                oswrLogEvent('windowTitleChange', ...arguments);
+            })
+
+            // os-window instance controls
+            const hoverControl = document.querySelector('#osw-hover');
+            const interactiveControl = document.querySelector('#osw-interactive');
+            const osThemeControl = document.querySelector('#osw-os-theme');
+            const themeControl = document.querySelector('#osw-theme');
+            const windowStateControl = document.querySelector('#osw-window-state');
+            const windowTitleControl = document.querySelector('#osw-window-title');
+
+            for (let i = 0; i < supportedOsThemes.length; i += 1) {
+                const newOption = document.createElement('option');
+                newOption.value = newOption.label = supportedOsThemes[i];
+                osThemeControl.add(newOption);
+            }
+            for (let i = 0; i < supportedThemes.length; i += 1) {
+                const newOption = document.createElement('option');
+                newOption.value = newOption.label = supportedThemes[i];
+                themeControl.add(newOption);
+            }
+            for (let i = 0; i < supportedWindowStates.length; i += 1) {
+                const newOption = document.createElement('option');
+                newOption.value = newOption.label = supportedWindowStates[i];
+                windowStateControl.add(newOption);
+            }
+
+            const logEvent = (eventName, event) => {
+                console.log('os-window: new event fired', eventName, event);
+            };
+            hoverControl.checked = osWindowInstance.hover;
+            hoverControl.addEventListener('change', function () {
+                osWindowInstance.hover = hoverControl.checked;
+            });
+            osWindowInstance.addEventListener('hoverChange', function (e) {
+                hoverControl.checked = e.detail.newValue;
+                logEvent('hoveChange', ...arguments);
+            });
+
+            interactiveControl.checked = osWindowInstance.interactive;
+                interactiveControl.addEventListener('change', function () {
+                osWindowInstance.interactive = interactiveControl.checked;
+            });
+            osWindowInstance.addEventListener('interactiveChange', function (e) {
+                interactiveControl.checked = e.detail.newValue;
+                logEvent('interactiveChange', ...arguments);
+            });
+
+            osThemeControl.selectedIndex = Array.prototype.findIndex.call(
+                osThemeControl.options,
+                (option) => option.value === osWindowInstance.osTheme
+            );
+            osThemeControl.addEventListener('input', function () {
+                osWindowInstance.osTheme = osThemeControl.options[osThemeControl.selectedIndex].value;
+            });
+            osWindowInstance.addEventListener('osThemeChange', function (e) {
+                osThemeControl.selectedIndex = Array.prototype.findIndex.call(
+                    osThemeControl.options,
+                    (option) => option.value === e.detail.newOsTheme
+                );
+                logEvent('osThemeChange', ...arguments);
+            });
+
+            themeControl.selectedIndex = Array.prototype.findIndex.call(
+                themeControl.options,
+                (option) => option.value === osWindowInstance.theme
+            );
+            themeControl.addEventListener('input', function () {
+                osWindowInstance.theme = themeControl.options[themeControl.selectedIndex].value;
+            });
+            osWindowInstance.addEventListener('themeChange', function (e) {
+                themeControl.selectedIndex = Array.prototype.findIndex.call(
+                    themeControl.options,
+                    (option) => option.value === e.detail.newTheme
+                );
+                logEvent('themeChange', ...arguments);
+            });
+
+
+            windowStateControl.selectedIndex = Array.prototype.findIndex.call(
+                windowStateControl.options,
+                (option) => option.value === osWindowInstance.windowState
+            );
+            windowStateControl.addEventListener('input', function () {
+                osWindowInstance.windowState = windowStateControl.options[windowStateControl.selectedIndex].value;
+            });
+            osWindowInstance.addEventListener('windowStateChange', function (e) {
+                windowStateControl.selectedIndex = Array.prototype.findIndex.call(
+                    windowStateControl.options,
+                    (option) => option.value === e.detail.newWindowState
+                );
+                logEvent('windowStateChange', ...arguments);
+            });
+
+            windowTitleControl.value = osWindowInstance.windowTitle;
+            windowTitleControl.addEventListener('input', function () {
+                osWindowInstance.windowTitle = windowTitleControl.value;
+            });
+            osWindowInstance.addEventListener('windowTitleChange', function (e) {
+                windowTitleControl.value = e.detail.newWindowTitle;
+                logEvent('windowTitleChange', ...arguments);
+            });
+
+            document.querySelector('#oswrapp-html').innerText = prettier.format(
+                osWindowInstance.outerHTML,
+                {
+                    parser: 'html',
+                    plugins: prettierPlugins,
+                }
+            );
+            const observer = new MutationObserver((mutationsList, observer) => {
+                document.querySelector('#oswrapp-html').innerText = prettier.format(
+                    osWindowInstance.outerHTML,
+                    {
+                        parser: 'html',
+                        plugins: prettierPlugins,
+                    }
+                );
+            });
+
+            observer.observe(osWindowInstance, {
+                childList: true,
+                attributes: true,
+                subtree: true,
+            });
+        </script>
+    </body>
+</html>
