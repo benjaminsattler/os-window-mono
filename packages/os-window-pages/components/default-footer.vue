@@ -84,6 +84,15 @@
           >
             Vue.js
           </a>
+          &middot;
+          <a
+            href="https://github.com/benjaminsattler/os-window-reactjs"
+            rel="noopener"
+            data-track-label="footer-link-integration-reactjs"
+            :data-track-config="JSON.stringify(trackingConfig)"
+          >
+            react.js
+          </a>
         </v-col>
       </v-row>
     </v-container>

@@ -111,6 +111,17 @@
               component adapter for Vue.js
             </a>
           </li>
+          <li>
+            <a
+              rel="noopener"
+              href="http://github.com/benjaminsattler/os-window-reactjs"
+              target="_blank"
+              data-track-label="page-index-integrations-reactjs"
+              :data-track-config="JSON.stringify(trackingConfig)"
+            >
+              component adapter for react.js
+            </a>
+          </li>
         </ul>
       </v-col>
     </v-row>
