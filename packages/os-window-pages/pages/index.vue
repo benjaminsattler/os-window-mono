@@ -66,7 +66,7 @@
           :data-track-config="JSON.stringify(trackingConfig)"
         >
           <pre class="sourcecode html"><code>&lt;!-- Include specific version (recommended) --&gt;</code>
-<code>&lt;script type=&quot;module&quot; src=&quot;https://unpkg.com/os-window@0.2.2&quot;&gt;&lt;/script&gt;</code>
+<code>&lt;script type=&quot;module&quot; src=&quot;https://unpkg.com/os-window@0.3.0&quot;&gt;&lt;/script&gt;</code>
 <code />
 <code>&lt;!-- Include latest version (not recommended) --&gt;</code>
 <code>&lt;script type=&quot;module&quot; src=&quot;https://unpkg.com/os-window&quot;&gt;&lt;/script&gt;</code></pre>
