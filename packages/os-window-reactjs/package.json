@@ -1,6 +1,6 @@
 {
   "name": "os-window-reactjs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Integrates the os-window custom component into reactjs.",
   "main": "main.js",
   "scripts": {
