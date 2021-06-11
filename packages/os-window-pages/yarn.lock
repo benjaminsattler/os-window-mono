@@ -7867,14 +7867,14 @@ os-tmpdir@^1.0.0, os-tmpdir@~1.0.2:
   integrity sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
 
 os-window-vue@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/os-window-vue/-/os-window-vue-0.1.5.tgz#21688f6f03ed787180b7d2560e7b6a0339e168af"
-  integrity sha512-eICaHpy3FuFmLBsloJf3z+2fmR40F0wHJkoX9M8cE7jPDn7xs93C2IrfGMltvoNAtBiYGzMka8xaPnJilFR4WQ==
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/os-window-vue/-/os-window-vue-0.1.6.tgz#b2b87b5ac6285e742985ce0142d86565da34d3b2"
+  integrity sha512-yx9WFt2WHm1a3ClpDiYSGa/teszkrWYh8EOlQi9RMLViF2POQhG/caGkrc2M699ciE7za0tHmeuHqob//PX+qg==
 
 os-window@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/os-window/-/os-window-0.3.0.tgz#ff94b9cc957d5db1152e3b6b3bd76c30a9a340cd"
-  integrity sha512-MHFhI5gchnkHXRW+JQ+xLmJ3PgiBRpUqxicK/NY9NjGtVbw9hqgUZBQ9YmSsxTvWh1oVDwot4UjLw+/Na8Tvow==
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/os-window/-/os-window-0.3.1.tgz#3e9136befbc072ad8718ce1007b237ac5ec03645"
+  integrity sha512-DLiOZDdx7i2ps+Q7CDXXToZmHCIdcNhHP0YerO6blOXSSiJmtmBuR6Pxr1kbfyVtN4YwttXSyTcFKME1iDdiCw==
 
 osenv@^0.1.4:
   version "0.1.5"
