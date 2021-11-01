@@ -1,0 +1,13 @@
+{
+  "name": "os-window-mono",
+  "version": "0.1.0",
+  "description": "os-window mono repository",
+  "author": {
+    "name": "Benjamin Sattler",
+    "email": "bsattler.inbox@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
