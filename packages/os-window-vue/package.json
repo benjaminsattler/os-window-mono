@@ -57,13 +57,14 @@
     "eslint": "^7.28.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-vue": "^7.11.0",
-    "husky": "^6.0.0",
     "mocha": "^9.0.0",
     "np": "^7.5.0",
     "npm-install-peers": "^1.2.2",
+    "os-window": "^0.3.1",
     "playwright": "^1.12.1",
     "prettier": "^2.3.1",
     "serve-static": "^1.14.1",
+    "vue": "^2.0.0",
     "vue-template-compiler": "^2.6.14"
   },
   "directories": {
