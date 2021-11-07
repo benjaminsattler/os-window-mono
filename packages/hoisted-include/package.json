@@ -1,0 +1,27 @@
+{
+  "name": "hoisted-include",
+  "version": "0.1.0",
+  "description": "A middleware that resolves static files from multiple roots.",
+  "keywords": [],
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjaminsattler/os-window-mono.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benjaminsattler/os-window-mono/issues"
+  },
+  "homepage": "https://os-window.benjaminsattler.net",
+  "main": "main.js",
+  "types": "main.d.ts",
+  "author": {
+    "name": "Benjamin Sattler",
+    "email": "bsattler.inbox@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "send": "^0.17.1"
+  }
+}

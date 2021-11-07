@@ -1,14 +1,19 @@
 #!/usr/bin/env node
+const hoistedInclude = require('hoisted-include');
 
 const playwright = require('playwright');
 const connect = require('connect');
 const serveStatic = require('serve-static');
 const http = require('http');
 
+process.chdir(`${__dirname}/../`);
 const product = process.env.BROWSER || 'chromium';
 const port = process.argv[2] || 8000;
 const app = connect();
-app.use(serveStatic(`${__dirname}/../`, { index: ['index.html'] }));
+
+app.use('/hoist/', hoistedInclude(['./', '../../'], '/hoist/'));
+app.use(serveStatic('./'), { index: ['index.html'] });
+
 const server = http.createServer(app).listen(port);
 
 (async () => {

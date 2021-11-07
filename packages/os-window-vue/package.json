@@ -9,7 +9,7 @@
     "test": "node ./test/runner.js",
     "prerelease": "rm -rf node_modules && yarn && npx npm-install-peers && npm login",
     "release": "np --no-cleanup",
-    "prepare": "husky install"
+    "prepare": "yarn husky install"
   },
   "keywords": [
     "window",
@@ -57,10 +57,11 @@
     "eslint": "^7.28.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-vue": "^7.11.0",
+    "hoisted-include": "workspace:^",
     "mocha": "^9.0.0",
     "np": "^7.5.0",
     "npm-install-peers": "^1.2.2",
-    "os-window": "^0.3.1",
+    "os-window": "workspace:^",
     "playwright": "^1.12.1",
     "prettier": "^2.3.1",
     "serve-static": "^1.14.1",
