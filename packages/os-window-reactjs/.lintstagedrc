@@ -1,0 +1,4 @@
+{
+  "*.js": "yarn run lint-files",
+  "*.ts": "yarn run lint-files"
+}

@@ -1,0 +1,4 @@
+{
+  "*.{js,vue}": "yarn run lint-files",
+  "*.{css,vue}": "yarn run stylelint"
+}

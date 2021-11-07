@@ -4,12 +4,13 @@
   "description": "Integrates the os-window custom component into vue.",
   "main": "main.js",
   "scripts": {
-    "lint": "vue-cli-service lint --no-fix browser.js main.js lib test",
-    "dev": "python -m SimpleHTTPServer 8000",
+    "lint-files": "vue-cli-service lint --config ./.eslintrc.json --no-fix",
+    "lint-all": "yarn run lint-files browser.js main.js lib test",
+    "dev": "node ./dev/runner.js",
     "test": "node ./test/runner.js",
     "prerelease": "rm -rf node_modules && yarn && npx npm-install-peers && npm login",
     "release": "np --no-cleanup",
-    "prepare": "yarn husky install"
+    "precommit": "yarn run lint-staged"
   },
   "keywords": [
     "window",
@@ -58,6 +59,7 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-vue": "^7.11.0",
     "hoisted-include": "workspace:^",
+    "lint-staged": "^11.2.6",
     "mocha": "^9.0.0",
     "np": "^7.5.0",
     "npm-install-peers": "^1.2.2",

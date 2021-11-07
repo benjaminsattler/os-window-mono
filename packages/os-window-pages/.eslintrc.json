@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "extends": [
+    "@nuxtjs",
+    "plugin:nuxt/recommended"
+  ],
+  "rules": {
+    "vue/v-slot-style": "error"
+  }
+}

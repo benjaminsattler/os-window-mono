@@ -1,3 +1,5 @@
+const resolve = require('path').resolve;
+
 const options = {
   mode: 'universal',
   /*
@@ -30,6 +32,7 @@ const options = {
   /*
   ** Nuxt.js dev-modules
   */
+  modulesDir: resolve(__dirname, '../../node_modules/'),
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',

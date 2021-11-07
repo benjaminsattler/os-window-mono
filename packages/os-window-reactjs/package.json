@@ -4,11 +4,13 @@
   "description": "Integrates the os-window custom component into reactjs.",
   "main": "main.js",
   "scripts": {
-    "lint": "eslint --no-fix main.js lib test --ext .js,.ts",
-    "dev": "python -m SimpleHTTPServer 8000",
+    "lint-files": "eslint --config ./.eslintrc.json --no-fix --ext .js,.ts",
+    "lint-all": "yarn run lint-files main.js lib test",
+    "dev": "node ./dev/runner.js",
     "test": "node ./test/runner.js",
     "prerelease": "rm -rf node_modules && yarn && npx npm-install-peers && npm login",
-    "release": "np --no-cleanup"
+    "release": "np --no-cleanup",
+    "precommit": "yarn run lint-staged"
   },
   "keywords": [
     "window",
@@ -58,6 +60,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "hoisted-include": "workspace:^",
+    "lint-staged": "^11.2.6",
     "mocha": "^8.2.0",
     "np": "^7.0.0",
     "npm-install-peers": "^1.2.1",

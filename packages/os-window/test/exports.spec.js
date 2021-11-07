@@ -1,4 +1,4 @@
-import OsWindow, * as OsWindowExports from '../main.js';
+import OsWindow, * as OsWindowExports from '../main';
 
 describe('exports', () => {
   describe('main module', () => {

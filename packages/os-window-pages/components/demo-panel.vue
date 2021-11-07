@@ -27,10 +27,10 @@
         data-track-label="os-window-demo-theme"
         :data-track-config="JSON.stringify(trackingConfig)"
       >
-        <template v-slot:label>
+        <template #label>
           Dark Mode&nbsp;
           <v-tooltip bottom>
-            <template v-slot:activator="{ on }">
+            <template #activator="{ on }">
               <v-icon v-on="on">
                 mdi-information-outline
               </v-icon>
@@ -47,10 +47,10 @@
         data-track-label="os-window-demo-window-state"
         :data-track-config="JSON.stringify(trackingConfig)"
       >
-        <template v-slot:label>
+        <template #label>
           Minimize&nbsp;
           <v-tooltip bottom>
-            <template v-slot:activator="{ on }">
+            <template #activator="{ on }">
               <v-icon v-on="on">
                 mdi-information-outline
               </v-icon>
@@ -65,10 +65,10 @@
         data-track-label="os-window-demo-buttons-enable"
         :data-track-config="JSON.stringify(trackingConfig)"
       >
-        <template v-slot:label>
+        <template #label>
           Enable window buttons&nbsp;
           <v-tooltip bottom>
-            <template v-slot:activator="{ on }">
+            <template #activator="{ on }">
               <v-icon v-on="on">
                 mdi-information-outline
               </v-icon>
@@ -84,12 +84,12 @@
         data-track-label="os-window-demo-buttons-hover"
         :data-track-config="JSON.stringify(trackingConfig)"
       >
-        <template v-slot:label>
+        <template #label>
           Enable button hover effects&nbsp;
           <v-tooltip bottom>
-            <template v-slot:activator="{ on }">
+            <template #activator="{ on, foo }">
               <v-icon v-on="on">
-                mdi-information-outline
+                mdi-information-outline  {{ foo }}
               </v-icon>
             </template>
             When enabled then the button labels show when the mouse hovers over them
