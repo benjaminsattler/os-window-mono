@@ -1,0 +1,57 @@
+name: push-trigger
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  trigger-packages:
+    runs-on: ubuntu-20.04
+    outputs:
+      os-window: ${{ steps.trigger.outputs.os-window }}
+      os-window-vue: ${{ steps.trigger.outputs.os-window-vue }}
+      os-window-reactjs: ${{ steps.trigger.outputs.os-window-reactjs }}
+      os-window-pages: ${{ steps.trigger.outputs.os-window-pages }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+        with:
+          main-branch-name: master
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - name: Install yarn cache
+        uses: c-hive/gha-yarn-cache@v2
+      - name: Install monorepo
+        run: yarn
+      - name: Trigger affected workflows
+        id: trigger
+        run: |    
+          for PROJECT in os-window os-window-vue os-window-reactjs os-window-pages; do
+              echo $PROJECT
+              [[ -n `npx nx print-affected | jq --arg PROJECT $PROJECT '.projects[] | select(. == $PROJECT)'` ]] && echo "::set-output name=$PROJECT::true"
+          done
+          exit 0
+  os-window:
+    uses: benjaminsattler/os-window-mono/.github/workflows/os-window.yml@master
+    needs: trigger-packages
+    if: ${{ needs.trigger-packages.result == 'success' && needs.trigger-packages.outputs.os-window == 'true' }}
+
+  os-window-vue:
+    uses: benjaminsattler/os-window-mono/.github/workflows/os-window-vue.yml@master
+    needs: trigger-packages
+    if: ${{ needs.trigger-packages.result == 'success' && needs.trigger-packages.outputs.os-window-vue == 'true' }}
+  
+  os-window-reactjs:
+    uses: benjaminsattler/os-window-mono/.github/workflows/os-window-reactjs.yml@master
+    needs: trigger-packages
+    if: ${{ needs.trigger-packages.result == 'success' && needs.trigger-packages.outputs.os-window-reactjs == 'true' }}
+  
+  os-window-pages:
+    uses: benjaminsattler/os-window-mono/.github/workflows/os-window-pages.yml@master
+    needs: trigger-packages
+    if: ${{ needs.trigger-packages.result == 'success' && needs.trigger-packages.outputs.os-window-pages == 'true' }}

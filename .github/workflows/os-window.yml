@@ -1,10 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: os-window
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on: [push, pull_request]
+on: workflow_call
 
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -32,14 +32,20 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
 
-      - uses: c-hive/gha-yarn-cache@v1
+      - name: Install yarn cache
+        uses: c-hive/gha-yarn-cache@v2
 
-      - name: Install
+      - name: Install monorepo
         run: yarn
 
       - name: Lint
-        run: yarn lint
+        run: yarn nx lint-all os-window
 
       - name: Test
-        run: yarn test
+        run: yarn nx test os-window

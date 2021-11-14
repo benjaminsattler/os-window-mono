@@ -1,14 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: os-window-reactjs
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: workflow_call
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -31,24 +27,26 @@ jobs:
             os: ubuntu-18.04
           - browser: webkit
             os: windows-2019
-        os-window: [0.3.0]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
 
-    - uses: c-hive/gha-yarn-cache@v1
+      - name: Install yarn cache
+        uses: c-hive/gha-yarn-cache@v2
 
-    - name: Install
-      run: yarn
+      - name: Install monorepo
+        run: yarn
 
-    - name: Peers
-      run: yarn add os-window@${{ matrix.os-window }} react react-dom prop-types
+      - name: Lint
+        run: yarn nx lint-all os-window-reactjs
 
-    - name: Lint
-      run: yarn lint
-
-    # Runs a single command using the runners shell
-    - name: Tests
-      run: yarn test
+      - name: Test
+        run: yarn nx test os-window-reactjs
