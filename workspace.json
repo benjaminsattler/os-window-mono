@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "projects": {
+    "hoisted-include": {
+      "root": "packages/hoisted-include"
+    },
+    "os-window": {
+      "root": "packages/os-window"
+    },
+    "os-window-pages": {
+      "root": "packages/os-window-pages"
+    },
+    "os-window-reactjs": {
+      "root": "packages/os-window-reactjs"
+    },
+    "os-window-vue": {
+      "root": "packages/os-window-vue"
+    }
+  }
+}

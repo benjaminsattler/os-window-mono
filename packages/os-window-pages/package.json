@@ -12,7 +12,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint-files": "eslint --config ./.eslintrc.json --ext .js,.vue,.css --no-fix",
+    "lint-files": "eslint --config ./.eslintrc.js --ext .js,.vue,.css --no-fix",
     "lint-all": "yarn run lint-files .",
     "test": "true",
     "release": "np major",

@@ -7,7 +7,7 @@
     "lint-files": "eslint --config ./.eslintrc.json --no-fix --ext .js,.ts",
     "lint-all": "yarn run lint-files main.js lib test",
     "dev": "node ./dev/runner.js",
-    "test": "node ./test/runner.js",
+    "test": "node ./test/runner.js 8001",
     "prerelease": "rm -rf node_modules && yarn && npx npm-install-peers && npm login",
     "release": "np --no-cleanup",
     "precommit": "yarn run lint-staged"

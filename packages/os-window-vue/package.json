@@ -7,7 +7,7 @@
     "lint-files": "vue-cli-service lint --config ./.eslintrc.json --no-fix",
     "lint-all": "yarn run lint-files browser.js main.js lib test",
     "dev": "node ./dev/runner.js",
-    "test": "node ./test/runner.js",
+    "test": "node ./test/runner.js 8002",
     "prerelease": "rm -rf node_modules && yarn && npx npm-install-peers && npm login",
     "release": "np --no-cleanup",
     "precommit": "yarn run lint-staged"
@@ -56,6 +56,7 @@
     "chai": "^4.3.4",
     "connect": "^3.7.0",
     "eslint": "^7.28.0",
+    "eslint-plugin-filenames": "^1.3.2",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-vue": "^7.11.0",
     "hoisted-include": "workspace:^",
