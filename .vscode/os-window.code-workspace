@@ -1,0 +1,34 @@
+{
+  "folders":[
+    {
+      "name": "root",
+      "path": "../"
+    },
+    {
+      "name": "os-window",
+      "path": "../packages/os-window"
+    },
+    {
+      "name": "os-window-vue",
+      "path": "../packages/os-window-vue"
+    },
+    {
+      "name": "os-window-reactjs",
+      "path": "../packages/os-window-reactjs"
+    },
+    {
+      "name": "os-window-pages",
+      "path": "../packages/os-window-pages"
+    },
+    {
+      "name": "tools/hoisted-include",
+      "path": "../packages/hoisted-include"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "node_modules/": true,
+      "packages/": true
+    }
+  }
+}

@@ -291,11 +291,11 @@ if (process.browser) {
 
 export default {
   name: 'IndexPage',
-  layout: 'hero',
   components: {
     DemoPanel,
     OsWindowVue
   },
+  layout: 'hero',
   data () {
     return {
       trackingConfig: {
