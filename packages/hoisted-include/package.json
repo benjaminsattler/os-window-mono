@@ -1,6 +1,7 @@
 {
   "name": "hoisted-include",
   "version": "0.1.0",
+  "private": true,
   "description": "A middleware that resolves static files from multiple roots.",
   "keywords": [],
   "engines": {

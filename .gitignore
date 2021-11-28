@@ -1,5 +1,7 @@
+.env
 .pnp.*
 .yarn/*
+log/*
 !dist
 !.yarn/patches
 !.yarn/plugins

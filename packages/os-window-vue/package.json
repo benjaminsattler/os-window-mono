@@ -8,8 +8,6 @@
     "lint-all": "yarn run lint-files browser.js main.js lib test",
     "dev": "node ./dev/runner.js",
     "test": "node ./test/runner.js 8002",
-    "prerelease": "rm -rf node_modules && yarn && npx npm-install-peers && npm login",
-    "release": "np --no-cleanup",
     "precommit": "yarn run lint-staged"
   },
   "keywords": [
@@ -62,7 +60,6 @@
     "hoisted-include": "workspace:^",
     "lint-staged": "^11.2.6",
     "mocha": "^9.0.0",
-    "np": "^7.5.0",
     "npm-install-peers": "^1.2.2",
     "os-window": "workspace:^",
     "playwright": "^1.12.1",

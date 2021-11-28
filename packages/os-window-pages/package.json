@@ -15,7 +15,6 @@
     "lint-files": "eslint --config ./.eslintrc.json --no-error-on-unmatched-pattern --no-fix --ext .js,.vue,.css",
     "lint-all": "yarn run lint-files assets components layouts pages plugins static",
     "test": "true",
-    "release": "np major",
     "postrelease": "FULL=1 ./deploy.sh",
     "precommit": "yarn run lint-staged"
   },
@@ -40,7 +39,6 @@
     "eslint-plugin-nuxt": ">=0.4.2",
     "jest": "^24.1.0",
     "lint-staged": "^11.2.6",
-    "np": "5.2.1",
     "roboto-fontface": "^0.10.0",
     "stylelint": "^10.1.0",
     "vue-jest": "^4.0.0-0"
