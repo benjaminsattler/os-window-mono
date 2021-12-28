@@ -246,4 +246,4 @@ function App() {
 export default App;
 ```
 
-[os-window]:https://github.com/benjaminsattler/os-window
+[os-window]:https://github.com/benjaminsattler/os-window-mono/

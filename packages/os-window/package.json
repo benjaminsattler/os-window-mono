@@ -29,10 +29,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/benjaminsattler/os-window.git"
+    "url": "https://github.com/benjaminsattler/os-window-mono.git"
   },
   "bugs": {
-    "url": "https://github.com/benjaminsattler/os-window/issues"
+    "url": "https://github.com/benjaminsattler/os-window-mono/issues"
   },
   "homepage": "https://os-window.benjaminsattler.net",
   "main": "main.js",

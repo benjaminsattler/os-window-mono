@@ -1,14 +1,14 @@
 # OS-Window Vue Component
-![CI Status](https://github.com/benjaminsattler/os-window-vue/workflows/CI/badge.svg)
-![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-vue)
+![CI Status](https://github.com/benjaminsattler/os-window-mono/workflows/os-window-vue/badge.svg)
+![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-mono)
 ![npm Bundle Size](https://img.shields.io/bundlephobia/min/os-window-vue)
 ![npm Version](https://img.shields.io/npm/v/os-window-vue)
 
-> A Vue wrapper around [os-window][os-window] which provides support for Vue events and properties.
+> A Vue wrapper around [os-window] which provides support for Vue events and properties.
 
 ## Getting started
 
-Choose any of the following methods to get started. You also need to install the actual [os-window][os-window] library.
+Choose any of the following methods to get started. You also need to install the actual [os-window] library.
 
 ### Install via node package manager
 
@@ -157,8 +157,8 @@ you'd like. Pull requests are warmly welcome.
 
 ## Licensing
 
-This project is licensed under MIT license. You'll find a copy of the MIT license in the file [LICENSE](LICENSE).
+This project is licensed under MIT license. You'll find a copy of the MIT license in the file [LICENSE](./LICENSE).
 
-[issues]:https://github.com/benjaminsattler/os-window-vue/issues/new
-[pulls]:https://github.com/benjaminsattler/os-window-vue/pulls
-[os-window]:https://github.com/benjaminsattler/os-window
+[issues]:https://github.com/benjaminsattler/os-window-mono/issues/new
+[pulls]:https://github.com/benjaminsattler/os-window-mono/pulls
+[os-window]:https://github.com/benjaminsattler/os-window-mono/

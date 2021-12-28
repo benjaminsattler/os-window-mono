@@ -1,14 +1,14 @@
 # OS-Window Reactjs Component
-![CI Status](https://github.com/benjaminsattler/os-window-reactjs/workflows/CI/badge.svg)
-![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-reactjs)
+![CI Status](https://github.com/benjaminsattler/os-window-mono/workflows/os-window-reactjs/badge.svg)
+![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-mono)
 ![npm Bundle Size](https://img.shields.io/bundlephobia/min/os-window-reactjs)
 ![npm Version](https://img.shields.io/npm/v/os-window-reactjs)
 
-> A React.js wrapper around [os-window][os-window] which provides support for React.js events and properties.
+> A React.js wrapper around [os-window] which provides support for React.js events and properties.
 
 ## Getting started
 
-Choose any of the following methods to get started. You also need to install the actual [os-window][os-window] library. For development you also need to install `prop-types`.
+Choose any of the following methods to get started. You also need to install the actual [os-window] library. For development you also need to install `prop-types`.
 
 ### Install via node package manager
 
@@ -18,7 +18,7 @@ Run the following command in your command line to add both os-window and os-wind
 > npm install --save os-window os-window-reactjs && npm install --save-dev prop-types
 
 # for YARN
-> yarn add os-window os-window-reactjs prop-types && yarn add -D prop-types
+> yarn add os-window os-window-reactjs && yarn add -D prop-types
 ```
 
 #### Including the base library
@@ -159,8 +159,8 @@ you'd like. Pull requests are warmly welcome.
 
 ## Licensing
 
-This project is licensed under MIT license. You'll find a copy of the MIT license in the file [LICENSE](LICENSE).
+This project is licensed under MIT license. You'll find a copy of the MIT license in the file [LICENSE](./LICENSE).
 
-[issues]:https://github.com/benjaminsattler/os-window-reactjs/issues/new
-[pulls]:https://github.com/benjaminsattler/os-window-reactjs/pulls
-[os-window]:https://github.com/benjaminsattler/os-window
+[issues]:https://github.com/benjaminsattler/os-window-mono/issues/new
+[pulls]:https://github.com/benjaminsattler/os-window-mono/pulls
+[os-window]:https://github.com/benjaminsattler/os-window-mono/

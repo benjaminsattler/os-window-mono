@@ -15,7 +15,6 @@
     "lint-files": "eslint --config ./.eslintrc.json --no-error-on-unmatched-pattern --no-fix --ext .js,.vue,.css",
     "lint-all": "yarn run lint-files assets components layouts pages plugins static",
     "test": "true",
-    "postrelease": "FULL=1 ./deploy.sh",
     "precommit": "yarn run lint-staged"
   },
   "dependencies": {

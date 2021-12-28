@@ -91,4 +91,4 @@ This project is also published to the CDN unpkg, which enables you to skip any l
 <script type="module" src="https://unpkg.com/os-window-vue/browser.js"></script>
 ```
 
-[os-window]:https://github.com/benjaminsattler/os-window
+[os-window]:https://github.com/benjaminsattler/os-window-mono/

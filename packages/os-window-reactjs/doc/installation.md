@@ -1,6 +1,6 @@
 ## Installation
 
-Choose any of the following methods to get started. You also need to install the actual [os-window][os-window] library.
+Choose any of the following methods to get started. You also need to install the actual [os-window] library.
 
 ### Install via node package manager
 
@@ -94,4 +94,4 @@ This project is also published to the CDN unpkg, which enables you to skip any l
 <script type="module" src="https://unpkg.com/os-window-reactjs/browser.js"></script>
 ```
 
-[os-window]:https://github.com/benjaminsattler/os-window
+[os-window]:https://github.com/benjaminsattler/os-window-mono/

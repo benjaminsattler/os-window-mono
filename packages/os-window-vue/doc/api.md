@@ -294,4 +294,4 @@ export default {
 </script>
 ```
 
-[os-window]:https://github.com/benjaminsattler/os-window
+[os-window]:https://github.com/benjaminsattler/os-window-mono/

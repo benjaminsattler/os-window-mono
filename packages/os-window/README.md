@@ -1,6 +1,6 @@
 # OS-Window Web Component
-![CI Status](https://github.com/benjaminsattler/os-window/workflows/CI/badge.svg)
-![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window)
+![CI Status](https://github.com/benjaminsattler/os-window-mono/workflows/os-window/badge.svg)
+![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-mono)
 ![npm Bundle Size](https://img.shields.io/bundlephobia/min/os-window)
 ![npm Version](https://img.shields.io/npm/v/os-window)
 
@@ -157,7 +157,7 @@ you'd like. Pull requests are warmly welcome.
 
 ## Licensing
 
-This project is licensed under MIT license. You'll find a copy of the MIT license in the file [LICENSE](LICENSE).
+This project is licensed under MIT license. You'll find a copy of the MIT license in the file [LICENSE](./LICENSE).
 
-[issues]:https://github.com/benjaminsattler/os-window/issues/new
-[pulls]:https://github.com/benjaminsattler/os-window/pulls
+[issues]:https://github.com/benjaminsattler/os-window-mono/issues/new
+[pulls]:https://github.com/benjaminsattler/os-window-mono/pulls

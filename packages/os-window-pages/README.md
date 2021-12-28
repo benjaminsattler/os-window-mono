@@ -1,21 +1,21 @@
 # OS-Window Website
-![CI Status](https://github.com/benjaminsattler/os-window-pages/workflows/CI/badge.svg)
-![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-pages)
+![CI Status](https://github.com/benjaminsattler/os-window-mono/workflows/os-window-pages/badge.svg)
+![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-mono)
 
-> The source behind the website for [os-window][os-window] at https://os-window.benjaminsattler.net
+> The source behind the website for [os-window] at https://os-window.benjaminsattler.net
 
 ## Structure
 
 This project is based on [nuxt.js](https://nuxtjs.org/) and runs on github pages based on this repository.
-In this repository you'll find two branches:
-- [master](https://github.com/benjaminsattler/os-window-pages/tree/master) Holds the development files
-- [gh-pages](https://github.com/benjaminsattler/os-window-pages/tree/gh-pages) Holds the SSR files that'll be played out using github pages.
+In this repository you'll find both the development files and the SSR rendered output:
+- [packages/os-window-pages/](./packages/os-window-pages/) Holds the development files
+- [docs/](./docs/) Holds the SSR files that'll be played out using github pages.
 
-Each new deploy to github pages automatically gets tagged on master before being pushed to the `gh-pages` branch, so that you'll always be able to correlate each deploy to the things that went live across the two branches.
+During each monorepo release the `deploy.sh` script gets invoked which will compile new SSR pages and copy them to the correct folder for direct access via GitHub pages.
 
 ## Development
 
-In order to start developing, please checkout the `master` branch. For dependency management this project uses `yarn`, so the command for installing dependencies is just
+For dependency management this project uses `yarn` in combination with `nx`, so the command for installing dependencies is just
 
 ```shell
 > yarn
@@ -24,7 +24,7 @@ In order to start developing, please checkout the `master` branch. For dependenc
 After all dependencies and devDependencies have been installed successfully, then you can start the development server by issuing the command
 
 ```shell
-> yarn dev
+> yarn nx run os-window-pages:dev
 ```
 
 This should make the development app available under the local address `http://localhost:3000`
@@ -34,37 +34,25 @@ This should make the development app available under the local address `http://l
 There's a linter configuration included in this repository. You can run the linter manually by issuing this command:
 
 ```shell
-> yarn lint
+> yarn nx run os-window-pages:lint-all
 ```
 
 The linter will automatically be run on any staged files in a pre-commit hook, and on the CI pipeline after each push.
 
 ## Deploying
 
-Before deploying a new version of the website please ensure that the worktree is clean (no uncomitted changes) and that the current branch is not `gh-pages`. You can then deploy a new version to github pages by issuing this command:
+Deploying a new version of the website means to create a new release for the whole monorepo. in order to do this please have a look at the [corresponding section of the monorepo development documentation](../../DEVELOPMENT.md#releases).
 
-```shell
-> yarn release
-```
-
-this will run the deployment, which will perform a bunch of steps:
-
-1. run `np` for tagging and creating a new github release
-2. create a new worktree in a temporary folder
-3. install dependencies and devDependencies by executing `yarn` in that temporary worktree
-4. generate the new SSR pages by executing `yarn generate` in that temporary worktree
-5. commit and push the SSR pages to the gh-pages branch
-
-All of these steps will then trigger a new deploy of the github pages environment, which will ultimately cause the changes to go live.
+Before deploying a new version of the website please ensure that the worktree is clean (no uncomitted changes). 
 
 ### Deploy preview
 
 If you want to preview the SSR files, then you can issue the command
 ```shell
-> ./deploy.sh
+> ./packages/os-window-pages/deploy.sh preview
 ```
 
-This will run the SSR generation up to the point of pushing the changes to origin. The script will end with a message telling you how to proceed with the deploy or how to locally check the artifact. Notice that at this point the changes are already locally committed, so in order to undo your changes to the `gh-pages` branch you have to hard reset the repo by one commit using `git reset --hard HEAD^`. And easy way to check the SSR pages could be to spawn any simple http webserver in the `gh-pages` branch, such as
+This will run the SSR generation. The script will end with the generated SSR files in the folder `/docs/`. An easy way to check the SSR pages could be to spawn any simple http webserver in the `docs` directory, such as
 
 ```shell
 > python -m SimpleHTTPServer 8080
@@ -84,6 +72,6 @@ you'd like. Pull requests are warmly welcome.
 
 This project is licensed under MIT license. You'll find a copy of the MIT license in the file [LICENSE](LICENSE).
 
-[issues]:https://github.com/benjaminsattler/os-window-pages/issues/new
-[pulls]:https://github.com/benjaminsattler/os-window-pages/pulls
-[os-window]:https://github.com/benjaminsattler/os-window
+[issues]:https://github.com/benjaminsattler/os-window-mono/issues/new
+[pulls]:https://github.com/benjaminsattler/os-window-mono/pulls
+[os-window]:https://github.com/benjaminsattler/os-window-mono
