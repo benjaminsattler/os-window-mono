@@ -345,7 +345,7 @@ async function pagesBuild(tag) {
 
 async function commitPages() {
   return new Promise((resolve, reject) => {
-    const child = child_process.exec(`${GIT_EXEC} add dist/os-window-pages && ${GIT_EXEC} commit --amend --no-edit --no-verify`);
+    const child = child_process.exec(`${GIT_EXEC} add docs && ${GIT_EXEC} commit --amend --no-edit --no-verify`);
     child.stderr.pipe(LOGFILE, {end: false});
     child.stdout.pipe(LOGFILE, {end: false});
     child.on('error', reject);

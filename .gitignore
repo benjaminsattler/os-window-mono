@@ -2,7 +2,6 @@
 .pnp.*
 .yarn/*
 log/*
-!dist
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
