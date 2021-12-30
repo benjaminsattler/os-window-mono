@@ -1,0 +1,19 @@
+name: dispatch-trigger
+on:
+  workflow_dispatch:
+    branches:
+      - master    
+
+jobs: 
+  os-window:
+    uses: benjaminsattler/os-window-mono/.github/workflows/os-window.yml@master
+
+  os-window-vue:
+    uses: benjaminsattler/os-window-mono/.github/workflows/os-window-vue.yml@master
+  
+  os-window-reactjs:
+    uses: benjaminsattler/os-window-mono/.github/workflows/os-window-reactjs.yml@master
+    
+  os-window-pages:
+    uses: benjaminsattler/os-window-mono/.github/workflows/os-window-pages.yml@master
+    

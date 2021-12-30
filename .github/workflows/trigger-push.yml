@@ -31,10 +31,9 @@ jobs:
       - name: Trigger affected workflows
         id: trigger
         run: |    
-          AFFECTED=$(yarn nx print-affected)
-          for PROJECT in os-window os-window-vue os-window-reactjs os-window-pages; do
-              echo "${PROJECT}"
-              [[ -n `echo "${AFFECTED}" | jq --arg PROJECT "${PROJECT}" '.projects[] | select(. == "${PROJECT}")'` ]] && echo "::set-output name=${PROJECT}::true"
+          for AFFECTED_WORKSPACE in $(yarn workspaces list --since=${{ env.NX_BASE }} --json); do
+              WORKSPACE_NAME=$(echo ${AFFECTED_WORKSPACE} | jq -r '.name')
+              echo "::set-output name=${WORKSPACE_NAME}::true"
           done
           exit 0
   os-window:

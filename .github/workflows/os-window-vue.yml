@@ -21,10 +21,10 @@ jobs:
       fail-fast: false
       matrix:
         browser: [chromium,firefox,webkit]
-        os: [ubuntu-18.04,windows-2019,macos-10.15]
+        os: [ubuntu-20.04,windows-2019,macos-10.15]
         exclude:
           - browser: webkit
-            os: ubuntu-18.04
+            os: ubuntu-20.04
           - browser: webkit
             os: windows-2019
 
@@ -46,7 +46,7 @@ jobs:
         run: yarn
 
       - name: Lint
-        run: yarn nx lint-all os-window-vue
+        run: yarn workspace os-window-vue lint-all
 
       - name: Test
-        run: yarn nx test os-window-vue
+        run: yarn workspace os-window-vue test
