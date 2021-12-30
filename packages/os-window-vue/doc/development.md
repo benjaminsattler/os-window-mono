@@ -23,7 +23,7 @@ Next make sure to install the development dependencies:
 For the next step please make sure to have a working installation of **Python 2.x**. Start the preconfigured python web server to load the development debug HTML page:
 
 ```shell
-> yarn nx run os-window-vue:dev
+> yarn workspace os-window-vue dev
 ```
 
 Now you can point your web browser at `http://localhost:8000/html/debug.html` and see the os-window-vue component in action. It'll not automatically reload, make sure to refresh the page once you saved your changes.
@@ -33,7 +33,7 @@ Now you can point your web browser at `http://localhost:8000/html/debug.html` an
 In order to run the tests during development, simply type the following command in your console:
 
 ```shell
-> yarn nx run os-window-vue:test
+> yarn workspace os-window-vue test
 ```
 
 ## Running EsLint
@@ -41,7 +41,7 @@ In order to run the tests during development, simply type the following command 
 In order to run EsLint on the source and test files, simply type the following command in your console:
 
 ```shell
-> yarn nx run os-window-vue:lint-all
+> yarn workspace os-window-vue lint-all
 ```
 
 The linter will also automatically be run in a git hook pre-commit.

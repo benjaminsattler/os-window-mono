@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+      - name: Derive appropriate SHAs for base and head for affected workspaces
         uses: nrwl/nx-set-shas@v2
         with:
           main-branch-name: master
@@ -33,6 +33,7 @@ jobs:
         run: |    
           for AFFECTED_WORKSPACE in $(yarn workspaces list --since=${{ env.NX_BASE }} --json); do
               WORKSPACE_NAME=$(echo ${AFFECTED_WORKSPACE} | jq -r '.name')
+              echo "triggering ${WORKSPACE_NAME}"
               echo "::set-output name=${WORKSPACE_NAME}::true"
           done
           exit 0

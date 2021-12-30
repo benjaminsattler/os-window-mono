@@ -15,7 +15,7 @@ During each monorepo release the `deploy.sh` script gets invoked which will comp
 
 ## Development
 
-For dependency management this project uses `yarn` in combination with `nx`, so the command for installing dependencies is just
+For dependency management this project uses `yarn`. The command for installing dependencies is just
 
 ```shell
 > yarn
@@ -24,7 +24,7 @@ For dependency management this project uses `yarn` in combination with `nx`, so 
 After all dependencies and devDependencies have been installed successfully, then you can start the development server by issuing the command
 
 ```shell
-> yarn nx run os-window-pages:dev
+> yarn workspace os-window-pages dev
 ```
 
 This should make the development app available under the local address `http://localhost:3000`
@@ -34,7 +34,7 @@ This should make the development app available under the local address `http://l
 There's a linter configuration included in this repository. You can run the linter manually by issuing this command:
 
 ```shell
-> yarn nx run os-window-pages:lint-all
+> yarn workspace os-window-pages lint-all
 ```
 
 The linter will automatically be run on any staged files in a pre-commit hook, and on the CI pipeline after each push.

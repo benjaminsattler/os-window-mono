@@ -16,7 +16,7 @@ Next make sure to install the development dependencies:
 When all is installed you can start the development webserver:
 
 ```shell
-> yarn nx run os-window-reactjs:dev
+> yarn workspace os-window-reactjs dev
 ```
 
 Now you can point your web browser at `http://localhost:8000/html/debug.html` and see the os-window-reactjs component in action. Changes to the component will not be hot reloaded in the browser, so make sure to reload your browser after changes to the source.
@@ -26,7 +26,7 @@ Now you can point your web browser at `http://localhost:8000/html/debug.html` an
 In order to run the tests during development, simply type the following command in your console:
 
 ```shell
-> yarn nx run os-window-reactjs:test
+> yarn workspace os-window-reactjs test
 ```
 
 ## Running EsLint
@@ -34,7 +34,7 @@ In order to run the tests during development, simply type the following command 
 In order to run EsLint on the source and test files, simply type the following command in your console:
 
 ```shell
-> yarn nx run os-window-reactjs:lint-all
+> yarn workspace os-window-reactjs lint-all
 ```
 
 The linter will also automatically be run in a git hook pre-commit.

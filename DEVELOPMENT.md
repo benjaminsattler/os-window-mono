@@ -16,7 +16,7 @@ This document aims to give an overview over the tooling that'll be used during t
 In this monorepo we're following the so-called trunk-based development, which means that all commits will happen directly onto trunk (here: `master`) in order to end up with CI as much as possible. Please structure your change in a way so that you're able to atomically commit and release it, and please don't use any long living feature-branch. For more information about our workflow please have a look at this: https://trunkbaseddevelopment.com
 ## Task Runner
 
-This monorepo utilizes yarn v2 with workspaces enabled. On top of yarn we're using `nx` (https://nx.dev) to amend yarn's monorepo capabilities and provide task runner caching and package dependency visualizations.
+This monorepo utilizes yarn v2 enabled workspaces. Find more information about yarn v2 at https://yarnpkg.com.
 
 ### From inside a package
 In order to execute a task inside a `package.json` file inside any packages you can simply `cd` into it and run it as usual:
@@ -25,9 +25,6 @@ In order to execute a task inside a `package.json` file inside any packages you 
 > cd packages/os-window
 # Use yarn directly
 > yarn dev
-
-# Or use nx for task execution
-> yarn nx run os-window:dev
 ```
 
 ### From inside the root package
@@ -37,8 +34,6 @@ Sometimes it's annoying to have to switch directories, especially when working o
 > cd packages/os-window
 # Use yarn directly
 > yarn workspace os-window dev
-
-# There is no corresponding command for nx in this case. You can only run nx commands from the monorepo root
 ```
 
 If you want to execute a task on all packages you can to this like this:
@@ -46,9 +41,6 @@ If you want to execute a task on all packages you can to this like this:
 ```bash
 # Use yarn directly
 > yarn workspaces foreach --parallel --interlaced --verbose run lint-all
-
-# Or use nx for task execution
-> yarn nx run-many --all --target=lint-all
 ```
 
 You can find some examples in the root `package.json` scripts section.
