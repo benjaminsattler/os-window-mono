@@ -76,7 +76,7 @@
           For more information have a look at the
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/blob/master/doc/installation.md"
+            href="https://github.com/benjaminsattler/os-window-mono/blob/master/packages/os-window/doc/installation.md"
             data-track-label="page-index-gettingstarted-installation"
             :data-track-config="JSON.stringify(trackingConfig)"
           >
@@ -85,7 +85,7 @@
           or the detailled
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/blob/master/doc/index.md"
+            href="https://github.com/benjaminsattler/os-window-mono/blob/master/packages/os-window/doc/index.md"
             data-track-label="page-index-gettingstarted-documentation"
             :data-track-config="JSON.stringify(trackingConfig)"
           >
@@ -103,7 +103,7 @@
           <li>
             <a
               rel="noopener"
-              href="http://github.com/benjaminsattler/os-window-vue"
+              href="http://github.com/benjaminsattler/os-window-mono/blob/master/packages/os-window-vue"
               target="_blank"
               data-track-label="page-index-integrations-vue"
               :data-track-config="JSON.stringify(trackingConfig)"
@@ -114,7 +114,7 @@
           <li>
             <a
               rel="noopener"
-              href="http://github.com/benjaminsattler/os-window-reactjs"
+              href="http://github.com/benjaminsattler/os-window-mono/blob/master/packages/os-window-reactjs"
               target="_blank"
               data-track-label="page-index-integrations-reactjs"
               :data-track-config="JSON.stringify(trackingConfig)"
@@ -205,7 +205,7 @@
           Find more detailed information in the
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/blob/master/doc/index.md"
+            href="https://github.com/benjaminsattler/os-window-mono/blob/master/packages/os-window/doc/index.md"
             target="_blank"
             data-track-label="page-index-documentation-documentation"
             :data-track-config="JSON.stringify(trackingConfig)"
@@ -230,7 +230,7 @@
           If you have any ideas, just
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/issues/new"
+            href="https://github.com/benjaminsattler/os-window-mono/issues/new"
             target="_blank"
             data-track-label="page-index-contributing-ideas"
             :data-track-config="JSON.stringify(trackingConfig)"
@@ -243,7 +243,7 @@
           If you find any bugs, just
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/issues/new"
+            href="https://github.com/benjaminsattler/os-window-mono/issues/new"
             target="_blank"
             data-track-label="page-index-contributing-bugs"
             :data-track-config="JSON.stringify(trackingConfig)"
@@ -253,7 +253,7 @@
           and let me know. Or go right ahead and create a
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/pulls/"
+            href="https://github.com/benjaminsattler/os-window-mono/pulls/"
             target="_blank"
             data-track-label="page-index-contributing-pullrequest"
             :data-track-config="JSON.stringify(trackingConfig)"
@@ -266,7 +266,7 @@
           If you'd like to contribute, please fork
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/"
+            href="https://github.com/benjaminsattler/os-window-mono/"
             target="_blank"
             data-track-label="page-index-contributing-fork"
             :data-track-config="JSON.stringify(trackingConfig)"

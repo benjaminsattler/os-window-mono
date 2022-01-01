@@ -15,7 +15,7 @@
         >
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/blob/master/doc/index.md"
+            href="https://github.com/benjaminsattler/os-window-mono/blob/master/packages/os-window/doc/index.md"
             data-track-label="footer-link-documentation"
             :data-track-config="JSON.stringify(trackingConfig)"
           >
@@ -24,7 +24,7 @@
           &middot;
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/releases"
+            href="https://github.com/benjaminsattler/os-window-mono/releases"
             data-track-label="footer-link-downloads"
             :data-track-config="JSON.stringify(trackingConfig)"
           >
@@ -33,7 +33,7 @@
           &middot;
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window"
+            href="https://github.com/benjaminsattler/os-window-mono"
             data-track-label="footer-link-sourcecode"
             :data-track-config="JSON.stringify(trackingConfig)"
           >
@@ -51,7 +51,7 @@
           &middot;
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/issues"
+            href="https://github.com/benjaminsattler/os-window-mono/issues"
             data-track-label="footer-link-bugreport"
             :data-track-config="JSON.stringify(trackingConfig)"
           >
@@ -60,7 +60,7 @@
           &middot;
           <a
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window/blob/master/LICENSE"
+            href="https://github.com/benjaminsattler/os-window-mono/blob/master/LICENSE"
             data-track-label="footer-link-license"
             :data-track-config="JSON.stringify(trackingConfig)"
           >
@@ -77,7 +77,7 @@
         >
           Available integrations:
           <a
-            href="https://github.com/benjaminsattler/os-window-vue"
+            href="https://github.com/benjaminsattler/os-window-mono/blob/master/packages/os-window-vue"
             rel="noopener"
             data-track-label="footer-link-integration-vuejs"
             :data-track-config="JSON.stringify(trackingConfig)"
@@ -86,7 +86,7 @@
           </a>
           &middot;
           <a
-            href="https://github.com/benjaminsattler/os-window-reactjs"
+            href="https://github.com/benjaminsattler/os-window-mono/blob/master/packages/os-window-reactjs"
             rel="noopener"
             data-track-label="footer-link-integration-reactjs"
             :data-track-config="JSON.stringify(trackingConfig)"

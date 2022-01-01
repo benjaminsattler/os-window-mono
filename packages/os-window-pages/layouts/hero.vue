@@ -45,7 +45,7 @@
         >
           <a
             aria-label="Open Github Repository"
-            href="https://github.com/benjaminsattler/os-window"
+            href="https://github.com/benjaminsattler/os-window-mono"
             target="_blank"
             rel="noopener"
           >
@@ -118,7 +118,7 @@
           <a
             aria-label="Open Github Repository"
             rel="noopener"
-            href="https://github.com/benjaminsattler/os-window"
+            href="https://github.com/benjaminsattler/os-window-mono"
             target="_blank"
           >
             <v-img src="/img/gh-32px.png" height="32" width="32" class="align-self-center" />
@@ -177,7 +177,7 @@
                 data-track-label="github"
                 :data-track-config="JSON.stringify(mobileTrackingConfig)"
               >
-                <a rel="noopener" href="https://github.com/benjaminsattler/os-window" target="_blank">
+                <a rel="noopener" href="https://github.com/benjaminsattler/os-window-mono" target="_blank">
                   <v-img src="/img/gh-32px.png" alt="Github Logo" height="32" width="32" class="align-self-center" />
                 </a>
               </v-btn>
