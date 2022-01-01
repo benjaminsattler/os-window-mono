@@ -1,7 +1,13 @@
-/*
+*
 
-!lib/**/*.js
+!lib/
+!lib/os-window/
 !lib/**/*.d.ts
+!lib/**/*.js
+!lib/*.d.ts
+!lib/*.js
+
 !main.js
 !main.d.ts
 !LICENSE
+!README.md
