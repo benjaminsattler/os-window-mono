@@ -1,6 +1,6 @@
 {
   "name": "os-window-vue",
-  "version": "0.1.6",
+  "version": "0.4.0",
   "description": "Integrates the os-window custom component into vue.",
   "main": "main.js",
   "scripts": {
@@ -39,7 +39,7 @@
   "homepage": "https://os-window.benjaminsattler.net",
   "license": "MIT",
   "peerDependencies": {
-    "os-window": "^0.2.0 || ^0.3.0",
+    "os-window": "^0.4.0",
     "vue": "^2.0.0"
   },
   "peerInstallOptions": {
