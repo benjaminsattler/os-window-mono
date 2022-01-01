@@ -38,11 +38,6 @@
   },
   "homepage": "https://os-window.benjaminsattler.net",
   "license": "MIT",
-  "files": [
-    "lib",
-    "main.js",
-    "browser.js"
-  ],
   "peerInstallOptions": {
     "save": false
   },

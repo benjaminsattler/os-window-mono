@@ -16,6 +16,7 @@ Releases prior to the switch to monorepo will list information about each indivi
 - [os-window] Switch to monorepo
 - [os-window-vue] Switch to monorepo
 - [os-window-reactjs] Switch to monorepo
+- [os-window-reactjs] Switched filenames from PascalCase to kebap-case
 - [os-window-pages] Switch to monorepo
 - [hoisted-include] Switch to monorepo
 

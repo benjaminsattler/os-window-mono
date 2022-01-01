@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
-import OsWindowReact from './lib/OsWindowReact.js';
+import * as lib from './lib/index.js';
 
 if (typeof window !== 'undefined') {
-  window.OsWindowReact = OsWindowReact(window.React, window.PropTypes);
+  window.OsWindowReact = lib.OsWindowReact(window.React, window.PropTypes);
 }
