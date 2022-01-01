@@ -242,15 +242,6 @@ class Tracker {
 
 Vue.use({
   install: (vue) => {
-    const proxied = new Proxy(vue.$gtag, {
-      get () {
-        if (!global.gtag) {
-          return function () {}
-        }
-        return Reflect.get(...arguments)
-      }
-    })
-    vue.$gtag = vue.prototype.$gtag = proxied
     const tracker = vue.$tracker = new Tracker({
       gtag: vue.$gtag,
       oswPageVersion: process.env.NUXT_ENV_GTM_OSW_PAGE_VERSION
