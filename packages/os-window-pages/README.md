@@ -1,5 +1,5 @@
 # OS-Window Website
-![CI Status](https://github.com/benjaminsattler/os-window-mono/workflows/os-window-pages/badge.svg)
+[![push-trigger](https://github.com/benjaminsattler/os-window-mono/actions/workflows/trigger-push.yml/badge.svg)](https://github.com/benjaminsattler/os-window-mono/actions/workflows/trigger-push.yml)
 ![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-mono)
 
 > The source behind the website for [os-window] at https://os-window.benjaminsattler.net

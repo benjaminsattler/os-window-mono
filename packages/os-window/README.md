@@ -1,5 +1,5 @@
 # OS-Window Web Component
-![CI Status](https://github.com/benjaminsattler/os-window-mono/workflows/os-window/badge.svg)
+[![push-trigger](https://github.com/benjaminsattler/os-window-mono/actions/workflows/trigger-push.yml/badge.svg)](https://github.com/benjaminsattler/os-window-mono/actions/workflows/trigger-push.yml)
 ![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-mono)
 ![npm Bundle Size](https://img.shields.io/bundlephobia/min/os-window)
 ![npm Version](https://img.shields.io/npm/v/os-window)
