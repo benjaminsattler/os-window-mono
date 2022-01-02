@@ -413,7 +413,7 @@ const nextTag = `v${next}`;
     await gitPushTag(nextTag);
 
     print({txt: `Creating GitHub Release`, emoji: '🌏'});
-    await githubCreateRelease(currentTag, nextTag);
+    await githubCreateRelease(nextTag);
 
     process.exitCode = 0;
   } catch (e) {
@@ -426,5 +426,6 @@ const nextTag = `v${next}`;
 
   if (process.exitCode === 0) {
     print({txt: `We're done, a new Release has been published (${next})`, emoji: '🍻'});
+    print({txt: `Don't forget to push master to remote now!`, emoji: '🙏'});
   }
 })();
