@@ -12,6 +12,10 @@ Releases prior to the switch to monorepo will list information about each indivi
 
 ## [Unreleased]
 
+<hr>
+
+## [0.4.1] - 2022-01-02
+
 ### Security
 - technical release, no changes
 <hr>
@@ -184,7 +188,8 @@ Releases prior to the switch to monorepo will list information about each indivi
 - [os-window] Initial Release
 - [os-window-vue] Initial Release
 
-[Unreleased]: https://github.com/benjaminsattler/os-window-mono/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/benjaminsattler/os-window-mono/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/benjaminsattler/os-window-mono/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/benjaminsattler/os-window-mono/compare/c9e624e1750d7a101f4cbb56ad8cf3d1d76f6688...v0.4.0
 [0.3.1-os-window]: https://github.com/benjaminsattler/os-window/compare/v0.3.0...v0.3.1
 [0.3.0-os-window]: https://github.com/benjaminsattler/os-window/compare/v0.2.4...v0.3.0
