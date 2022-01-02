@@ -12,6 +12,8 @@ Releases prior to the switch to monorepo will list information about each indivi
 
 ## [Unreleased]
 
+### Security
+- technical release, no changes
 <hr>
 
 ## [0.4.0] - 2022-01-01
