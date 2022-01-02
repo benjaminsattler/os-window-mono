@@ -24,9 +24,6 @@ const GIT_EXEC = `git -C ${ROOTDIR} --no-pager`;
 const GIT_TAG_MESSAGE = version => `Version ${version}`;
 const GIT_RELEASE_COMMIT_MESSAGE = version => `Release version ${version}`;
 const GITHUB_RELEASE_TITLE = GIT_TAG_MESSAGE;
-const NPM_USERNAME = process.env.NPM_USERNAME;
-const NPM_PASSWORD = process.env.NPM_PASSWORD;
-const NPM_USE_2FA = Object.keys(process.env).includes('NPM_USE_2FA') ? process.env.NPM_USE_2FA === '1' : true;
 const RELEASE_TYPE = process.env.RELEASE_TYPE;
 const GITHUB_COMPARISON_URL = (previous, next) => `https://github.com/benjaminsattler/os-window-mono/compare/${previous}...${next}`;
 
@@ -213,43 +210,7 @@ async function githubCreateRelease(nextRelease) {
   return child;
 }
 
-async function getTmpFilename() {
-  return new Promise((resolve, reject) => {
-    child_process.exec(`mktemp`, (error, stdout, stderr) => {
-      if (error !== null) {
-        reject(error);
-        return;
-      }
-      LOGFILE.write(stdout);
-      LOGFILE.write(stderr);
-      resolve(stdout.trim());
-    });
-  });
-}
-
-async function openOtpEditor(file) {
-  return new Promise((resolve, reject) => {
-    const child = child_process.exec(`open -tWn ${file}`);
-    child.stderr.pipe(LOGFILE, {end: false});
-    child.stdout.pipe(LOGFILE, {end: false});
-    child.on('error', reject);
-    child.on('exit', (code) => {
-      return code === 0 ? resolve(code) : reject(new Error(`Unable to open Editor with OTP File.`));
-    });
-  });
-}
-
-async function attempt2FaNpmLogin(otpFilename) {
-  return new Promise((resolve, reject) => {
-    const child = child_process.exec(`{ echo '${NPM_USERNAME}'; sleep 2; echo '${NPM_PASSWORD}'; sleep 2; cat ${otpFilename}; echo '\n'; } | ${PKG_EXEC} npm login --publish`);
-    child.stderr.pipe(LOGFILE, {end: false});
-    child.stdout.pipe(LOGFILE, {end: false});
-    child.on('error', reject);
-    child.on('exit', (code) => (code === 0) ? resolve(code) : reject(code));
-  });
-}
-
-async function verifyNpmLogin(otpFilename) {
+async function verifyNpmLogin() {
   return new Promise((resolve, reject) => {
     const child = child_process.exec(`${PKG_EXEC} npm whoami --publish`);
     child.stderr.pipe(LOGFILE, {end: false});
@@ -259,37 +220,21 @@ async function verifyNpmLogin(otpFilename) {
   });
 }
 
-async function npmLoginWith2Fa() {
-  let bail = false;
-  const onClose = () => { bail = true; reject();};
-  return new Promise(async (resolve, reject) => {
-    process.stdin.once('close', onClose);
-    const otpFilename = await getTmpFilename();
-    while(!bail) {
-      try {
-        print({txt: `Please put your OTP in this temporary file:`, emoji: '🔏'})
-        print({txt: `> ${otpFilename}`, emoji: '🔏'});
-        print({txt: `Waiting until the editor process has terminated`, emoji: '⏳'});
-        await openOtpEditor(otpFilename);
-        print({txt: 'Editor was closed, attempting login', emoji: '🔑'});
-        await attempt2FaNpmLogin(otpFilename);
-      } catch (e) {
-        print({ txt: `Error when logging in into NPM with 2FA, please try again`, emoji: '🚫'});
-        continue;
-      }
-      bail = true;
-      resolve();
-    }
-  }).finally(() => process.off('close', onClose));
-}
-
 async function npmLogin() {
   return new Promise((resolve, reject) => {
-    const child = child_process.exec(`{ echo '${NPM_USERNAME}'; sleep 2; echo '${NPM_PASSWORD}'; } | ${PKG_EXEC} npm login --publish`);
+    const child = child_process.exec(`${PKG_EXEC} npm login --publish`);
     child.stderr.pipe(LOGFILE, {end: false});
+    child.stderr.pipe(process.stdout, {end: false});
     child.stdout.pipe(LOGFILE, {end: false});
-    child.on('error', reject);
+    child.stdout.pipe(process.stdout, {end: false});
+    const listener = (e) => child.stdin.write(`${e}\n`);
+    process.stdin.on('data', listener);
+    child.on('error', (e) => {
+      process.stdin.off('data', listener);
+      reject();
+    });
     child.on('exit', (code) => {
+      process.stdin.off('data', listener);
       return code === 0 ? resolve(code) : reject(new Error(`Unable to login into npm registry`));
     });
   });
@@ -323,9 +268,17 @@ async function npmPublish() {
   return new Promise((resolve, reject) => {
     const child = child_process.exec(`${PKG_EXEC} workspaces foreach --no-private npm publish --tag latest`);
     child.stderr.pipe(LOGFILE, {end: false});
+    child.stderr.pipe(process.stderr, {end: false});
     child.stdout.pipe(LOGFILE, {end: false});
-    child.on('error', reject);
+    child.stdout.pipe(process.stdout, {end: false});
+    const listener = (e) => child.stdin.write(`${e}\n`);
+    process.stdin.on('data', listener);
+    child.on('error', (e) => {
+      process.stdin.off('data', listener);
+      reject();
+    });
     child.on('exit', (code) => {
+      process.stdin.off('data', listener);
       return code === 0 ? resolve(code) : reject(new Error(`Unable to publish npm package(s)`));
     });
   });
@@ -361,7 +314,7 @@ function usage() {
 Release script for os-window monorepo.
 Use this script to create a new public version of os-window and its components.
 
-Example usage: RELEASE_TYPE=<patch|minor|major> NPM_USERNAME=user NPM_PASSWORD=pass ${scriptname}
+Example usage: RELEASE_TYPE=<patch|minor|major> ${scriptname}
 
 Environment Variables:
 
@@ -370,34 +323,22 @@ This script expects a number of environment variables to be available:
   RELEASE_TYPE  Specifies which kind of release to create according to
                 semantic versioning (https://semver.org/). (mandatory)
                 Supported values: patch, minor, major
-  
-  NPM_USERNAME  Specifies the username to use to log in to the npm registry
-                (mandatory)
-
-  NPM_PASSWORD  Specifies the password to use to log in to the npm registry
-                (mandatory)
-  
-  NPM_USE_2FA   Specifies whether Two-Factor Authentication shall be used
-                during login into the npm registry. (optional, defaults to 1)
-                Supported values: 0, 1
 
 Invocation Examples:
 
-  > RELEASE_TYPE=patch NPM_USERNAME=npmuser NPM_PASSWORD=npmassword ${scriptname}
+  > RELEASE_TYPE=patch ${scriptname}
   To create a new release where the patch version is bumped.
 
-  > RELEASE_TYPE=minor NPM_USERNAME=npmuser NPM_PASSWORD=npmassword 
+  > RELEASE_TYPE=minor ${scriptname}
   To create a new release where the minor version is bumped.
 
-  > RELEASE_TYPE=major NPM_USERNAME=npmuser NPM_PASSWORD=npmassword 
+  > RELEASE_TYPE=major ${scriptname}
   To create a new release where the major version is bumped.`;
   print({txt: help, emoji: 'ℹ️'});
 }
 
 const mandatory = [
   'RELEASE_TYPE',
-  'NPM_USERNAME',
-  'NPM_PASSWORD',
 ];
 
 const missing = mandatory.filter(v => !(Object.keys(process.env).includes(v)));
@@ -421,7 +362,6 @@ const nextTag = `v${next}`;
     print({txt: `Logfile for this run will be: log/${logfileName}`, emoji: '📜'});
     print({txt: `Run this command for a live view of the logfile:`, emoji: '📿'});
     print({txt: `> tail -f ${ROOTDIR}/log/${logfileName}`, emoji: '📿'});
-    print({txt: `NPM 2 Factor Authentication is ${NPM_USE_2FA ? 'enabled' : 'disabled'}`, emoji: '📿'});
     print({txt: `Current is ${current}, next will be ${next}`, emoji: '🤓'});
 
     print({txt: `Checking if Git is clean`, emoji: '🚦'});
@@ -438,15 +378,10 @@ const nextTag = `v${next}`;
       await verifyNpmLogin();
     } catch (e) {
       print({txt: `Logging in into NPM`, emoji: '🔐'});
-      if (NPM_USE_2FA) {
-        await npmLoginWith2Fa();
-      } else {
-        await npmLogin();
-      }
+      await npmLogin();
       print({txt: 'Verifying NPM login', emoji: '🔎'});
       await verifyNpmLogin();
     }
-    
     print({txt: `Creating Release Commit`, emoji: '🎬'});
     await gitReleaseCommit(next);
 
